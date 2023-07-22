@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - SearchSpot
+  - HideSpot
   layers:
   - Default
   - TransparentFX
@@ -11,7 +13,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Interactable
   - 
   - 
   - 
@@ -40,4 +42,16 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Room Background
+    uniqueID: 855826459
+    locked: 0
+  - name: Room Floor
+    uniqueID: 832459701
+    locked: 0
+  - name: Furniture
+    uniqueID: 376123195
+    locked: 0
+  - name: Characters
+    uniqueID: 1239576223
     locked: 0
