@@ -5,10 +5,16 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    // Logic
+    public bool isHiding = false;
+    public bool isSearching = false;
+    
+    // Movement
     private Vector2 movement;
     private float movementSpeed = 3f;
     private Rigidbody2D rb;
     
+    // Animation
     private Animator animator;
 
 
@@ -22,7 +28,28 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        MoveCharacter();
+        if (!isHiding && !isSearching)
+        {
+            MoveCharacter();
+        }
+    }
+
+    public void HidePlayer(Vector3 position)
+    {
+        isHiding = true;
+
+        // Moves the player to the hidding spot position
+        gameObject.transform.position = new Vector3(position.x, transform.position.y, transform.position.z);
+
+        // Stops player movement
+        rb.velocity = Vector3.zero;
+        gameObject.GetComponent<SpriteRenderer>().enabled = false;
+    }
+
+    public void UnHidePlayer()
+    {
+        isHiding = false;
+        gameObject.GetComponent<SpriteRenderer>().enabled = true;
     }
 
     void MoveCharacter()
@@ -41,4 +68,5 @@ public class PlayerController : MonoBehaviour
 
         animator.SetBool("b_isWalking", movement.x != 0f);
     }
+
 }

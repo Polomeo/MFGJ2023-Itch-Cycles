@@ -244,6 +244,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 976712731, guid: 37a0e8302d81b834e946640d6ca82cc5, type: 3}
+      propertyPath: interactAction.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 976712731, guid: 37a0e8302d81b834e946640d6ca82cc5, type: 3}
+      propertyPath: interactAction.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 353687404459121616, guid: 37a0e8302d81b834e946640d6ca82cc5, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -292,7 +300,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Search_Drawer
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4749585805532410514, guid: 37a0e8302d81b834e946640d6ca82cc5, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 37a0e8302d81b834e946640d6ca82cc5, type: 3}
 --- !u!1 &807497510
 GameObject:
@@ -378,28 +387,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &814156220 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1204550381520619135, guid: ab61f3e4d1a9a1a4f8f6b9b931330a21, type: 3}
-  m_PrefabInstance: {fileID: 858441623}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &814156224
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 814156220}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 408fa7174f9d4fc489ea56c53f35cac0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isInRange: 0
-  interactKey: 0
-  interactAction:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1001 &858441623
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -407,6 +394,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 814156224, guid: ab61f3e4d1a9a1a4f8f6b9b931330a21, type: 3}
+      propertyPath: interactAction.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 1661868017}
     - target: {fileID: 1204550381520619073, guid: ab61f3e4d1a9a1a4f8f6b9b931330a21, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -455,6 +446,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hide_Bed
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 5730143345311290233, guid: ab61f3e4d1a9a1a4f8f6b9b931330a21, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab61f3e4d1a9a1a4f8f6b9b931330a21, type: 3}
+--- !u!1 &1661868017 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6347162749417964327, guid: 8662f35576af63a499ff773803dcab16, type: 3}
+  m_PrefabInstance: {fileID: 124929347}
+  m_PrefabAsset: {fileID: 0}

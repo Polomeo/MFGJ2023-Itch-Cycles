@@ -1,22 +1,52 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class HidingSpot : BaseInteractionItem
+public class HidingSpot : MonoBehaviour
 {
-    void Start()
+    public bool playerIsHiddenHere;
+    Vector3 lastPlayerPosition;
+
+    public void ToggleHidding(GameObject player)
     {
-        interactionText = "Press E to Hide";
+        PlayerController controller = player.GetComponent<PlayerController>();
+
+        if (controller != null)
+        {
+            lastPlayerPosition = controller.gameObject.transform.position;
+
+            if (!playerIsHiddenHere)
+            {
+                HidePlayerInHere();
+                // Hide the player in this gameObject position
+                controller.HidePlayer(transform.position);
+
+            }
+            else if (playerIsHiddenHere)
+            {
+                PlayerExitHideSpot();
+                controller.UnHidePlayer();
+            }
+        }
     }
 
-    public override void ShowInteractionText()
+    private void HidePlayerInHere()
     {
-        base.ShowInteractionText();
+        playerIsHiddenHere = true;
+        // show hidden animation
+        gameObject.GetComponent<SpriteRenderer>().color = Color.green;
+
+        Debug.Log("Player hid in " + gameObject.name);
     }
 
-    public override void Interact()
+    private void PlayerExitHideSpot()
     {
-        Debug.Log("Hiding in " + gameObject.name);
+        playerIsHiddenHere = false;
+        Debug.Log("Player came out of " + gameObject.name);
+        // show hidden animation
+        gameObject.GetComponent<SpriteRenderer>().color = Color.blue;
+
     }
 
 }

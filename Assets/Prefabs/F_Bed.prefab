@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1204550381520619134}
   - component: {fileID: 9113097344414479839}
   - component: {fileID: 814156224}
+  - component: {fileID: 7246584687939636921}
   m_Layer: 6
   m_Name: F_Bed
   m_TagString: HideSpot
@@ -125,7 +126,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isInRange: 0
-  interactKey: 0
+  interactKey: 101
   interactAction:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7246584687939636921}
+        m_TargetAssemblyTypeName: HidingSpot, Assembly-CSharp
+        m_MethodName: ToggleHidding
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &7246584687939636921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1204550381520619135}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df96285d7f7cd9e4e9c1ac4c7483dd49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerIsHiddenHere: 0
