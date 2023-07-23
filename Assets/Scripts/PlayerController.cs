@@ -42,12 +42,17 @@ public class PlayerController : MonoBehaviour
         animator.SetBool("b_isWalking", movement.x != 0f);
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        BaseInteractionItem col = collision.GetComponent<BaseInteractionItem>();
-        if (col != null)
-        {
-            col.ShowInteractionText();
-        }
-    }
+    //private void OnTriggerStay2D(Collider2D collision)
+    //{
+    //    BaseInteractionItem col = collision.GetComponent<BaseInteractionItem>();
+    //    if (col != null)
+    //    {
+    //        col.ShowInteractionText();
+
+    //        if (Input.GetKeyDown(KeyCode.E))
+    //        {
+    //            col.Interact();
+    //        }
+    //    }
+    //}
 }

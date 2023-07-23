@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1204550381520619073}
   - component: {fileID: 1204550381520619134}
   - component: {fileID: 9113097344414479839}
+  - component: {fileID: 5730143345311290233}
   m_Layer: 6
   m_Name: F_Bed
   m_TagString: HideSpot
@@ -111,3 +112,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &5730143345311290233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1204550381520619135}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df96285d7f7cd9e4e9c1ac4c7483dd49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

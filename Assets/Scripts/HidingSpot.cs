@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SearchingSpot : BaseInteractionItem
+public class HidingSpot : BaseInteractionItem
 {
     void Start()
     {
-        interactionText = "Press E to Search";
+        interactionText = "Press E to Hide";
     }
 
     public override void ShowInteractionText()
@@ -16,7 +16,7 @@ public class SearchingSpot : BaseInteractionItem
 
     public override void Interact()
     {
-        Debug.Log("Searching in " + gameObject.name);
+        Debug.Log("Hiding in " + gameObject.name);
     }
 
 }
