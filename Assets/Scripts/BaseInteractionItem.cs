@@ -8,7 +8,7 @@ public abstract class BaseInteractionItem : MonoBehaviour
     protected bool displayingInteractionText = false;
 
     public virtual void ShowInteractionText()
-    {        
+    { 
         if(!displayingInteractionText)
         {
             Debug.Log(interactionText);

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 353687404459121616}
   - component: {fileID: 353687404459121617}
   - component: {fileID: 593959253}
-  - component: {fileID: 593959256}
+  - component: {fileID: 976712731}
   m_Layer: 6
   m_Name: F_Wardrobe
   m_TagString: SearchSpot
@@ -112,7 +112,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &593959256
+--- !u!114 &976712731
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -121,6 +121,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 353687404459121618}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47aa799f2471a0a4c8d1bcb2f359355d, type: 3}
+  m_Script: {fileID: 11500000, guid: 408fa7174f9d4fc489ea56c53f35cac0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInRange: 0
+  interactKey: 0
+  interactAction:
+    m_PersistentCalls:
+      m_Calls: []
