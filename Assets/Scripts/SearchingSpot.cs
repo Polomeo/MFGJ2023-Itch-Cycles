@@ -2,21 +2,51 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SearchingSpot : BaseInteractionItem
+public class SearchingSpot : MonoBehaviour
 {
-    void Start()
+    public bool playerIsSearchingHere = false;
+    public bool alreadySearch = false;
+    [SerializeField] float searchTime = 3f;
+
+    public void SearchInSpot(GameObject player) 
     {
-        interactionText = "Press E to Search";
+        PlayerController controller = player.GetComponent<PlayerController>();
+        if (controller != null)
+        {
+            if (!playerIsSearchingHere && !alreadySearch)
+            {
+                StartCoroutine(Searching(controller));
+                playerIsSearchingHere = true;
+            }
+
+            if (alreadySearch)
+            {
+                Debug.Log("Spot already searched!");
+            }
+        }
     }
 
-    public override void ShowInteractionText()
+    IEnumerator Searching(PlayerController controller)
     {
-        base.ShowInteractionText();
-    }
+        Debug.Log("Searching...");
+        // [PLACEHOLDER] Change to search animation
+        gameObject.GetComponent<SpriteRenderer>().color = Color.yellow;
+        
+        // Tell the player that "is searching" and pass this GameObject position
+        controller.IsSearching(transform.position);
 
-    public override void Interact()
-    {
-        Debug.Log("Searching in " + gameObject.name);
-    }
+        // Wait for the search to finish
+        yield return new WaitForSeconds(searchTime);
 
+        // [PLACEHOLDER] Change to "already searched" sprite
+        gameObject.GetComponent<SpriteRenderer>().color = Color.green;
+
+        Debug.Log("Search complete.");
+        
+        // Tell the player that the searching is done
+        controller.DoneSearching();
+
+        playerIsSearchingHere = false;
+        alreadySearch = true;
+    }
 }

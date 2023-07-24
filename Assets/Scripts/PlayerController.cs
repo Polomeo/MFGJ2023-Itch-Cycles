@@ -17,7 +17,6 @@ public class PlayerController : MonoBehaviour
     // Animation
     private Animator animator;
 
-
     // Start is called before the first frame update
     void Start()
     {
@@ -34,11 +33,12 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    #region PLAYER_HIDDING
     public void HidePlayer(Vector3 position)
     {
         isHiding = true;
 
-        // Moves the player to the hidding spot position
+        // Transports the player to the hidding spot position
         gameObject.transform.position = new Vector3(position.x, transform.position.y, transform.position.z);
 
         // Stops player movement
@@ -51,7 +51,24 @@ public class PlayerController : MonoBehaviour
         isHiding = false;
         gameObject.GetComponent<SpriteRenderer>().enabled = true;
     }
+    #endregion
 
+    #region PLAYER_SEARCHING
+    public void IsSearching(Vector3 position)
+    {
+        isSearching = true;
+        // Transports the player to the searching spot position
+        gameObject.transform.position = new Vector3(position.x, transform.position.y, transform.position.z);
+
+        // Stops player movement
+        rb.velocity = Vector3.zero;
+    }
+
+    public void DoneSearching()
+    {
+        isSearching = false;
+    }
+    #endregion
     void MoveCharacter()
     {
         // Movement

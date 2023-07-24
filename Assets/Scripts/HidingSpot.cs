@@ -6,7 +6,8 @@ using UnityEngine;
 public class HidingSpot : MonoBehaviour
 {
     public bool playerIsHiddenHere;
-    Vector3 lastPlayerPosition;
+    [SerializeField] Sprite nonHideSprite;
+    [SerializeField] Sprite hideSprite;
 
     public void ToggleHidding(GameObject player)
     {
@@ -14,8 +15,6 @@ public class HidingSpot : MonoBehaviour
 
         if (controller != null)
         {
-            lastPlayerPosition = controller.gameObject.transform.position;
-
             if (!playerIsHiddenHere)
             {
                 HidePlayerInHere();
@@ -34,8 +33,9 @@ public class HidingSpot : MonoBehaviour
     private void HidePlayerInHere()
     {
         playerIsHiddenHere = true;
-        // show hidden animation
-        gameObject.GetComponent<SpriteRenderer>().color = Color.green;
+
+        // [PLACEHOLDER] show hidden animation
+        gameObject.GetComponent<SpriteRenderer>().sprite = hideSprite;
 
         Debug.Log("Player hid in " + gameObject.name);
     }
@@ -45,7 +45,7 @@ public class HidingSpot : MonoBehaviour
         playerIsHiddenHere = false;
         Debug.Log("Player came out of " + gameObject.name);
         // show hidden animation
-        gameObject.GetComponent<SpriteRenderer>().color = Color.blue;
+        gameObject.GetComponent<SpriteRenderer>().sprite = nonHideSprite;
 
     }
 
