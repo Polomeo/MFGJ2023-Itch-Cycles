@@ -12,6 +12,7 @@ public class Interactable : MonoBehaviour
     // This script is attached to the object with a Collider2D
     public bool isInRange;
     public KeyCode interactKey;
+    public string interactText;
     public UnityEvent interactAction;
 
     // When enters the trigger, sets "isInRange" to True
@@ -21,6 +22,9 @@ public class Interactable : MonoBehaviour
         {
             isInRange = true;
             Debug.Log("Player enter range of " +  gameObject.name);
+
+            // UI
+            UIManager.Instance.DisplayInteractionText(interactText);
         }
     }
 
@@ -31,6 +35,9 @@ public class Interactable : MonoBehaviour
         {
             isInRange = false;
             Debug.Log("Player exit range of " + gameObject.name);
+
+            // UI
+            UIManager.Instance.HideText();
         }
     }
 
