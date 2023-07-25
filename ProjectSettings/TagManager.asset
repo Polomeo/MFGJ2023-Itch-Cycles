@@ -6,6 +6,7 @@ TagManager:
   tags:
   - SearchSpot
   - HideSpot
+  - Enemy
   layers:
   - Default
   - TransparentFX
