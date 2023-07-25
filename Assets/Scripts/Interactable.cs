@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+// [RequireComponent(typeof(Rigidbody2D))]
 public class Interactable : MonoBehaviour
 {
     // based on video

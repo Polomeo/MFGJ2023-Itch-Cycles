@@ -7,6 +7,7 @@ public class SearchingSpot : MonoBehaviour
     public bool playerIsSearchingHere = false;
     public bool alreadySearch = false;
     [SerializeField] float searchTime = 3f;
+    [SerializeField] Sprite alreadySearchSprite;
 
     public void SearchInSpot(GameObject player) 
     {
@@ -30,7 +31,7 @@ public class SearchingSpot : MonoBehaviour
     {
         Debug.Log("Searching...");
         // [PLACEHOLDER] Change to search animation
-        gameObject.GetComponent<SpriteRenderer>().color = Color.yellow;
+        // gameObject.GetComponent<SpriteRenderer>().color = Color.yellow;
         
         // Tell the player that "is searching" and pass this GameObject position
         controller.IsSearching(transform.position);
@@ -39,7 +40,7 @@ public class SearchingSpot : MonoBehaviour
         yield return new WaitForSeconds(searchTime);
 
         // [PLACEHOLDER] Change to "already searched" sprite
-        gameObject.GetComponent<SpriteRenderer>().color = Color.green;
+        gameObject.GetComponent<SpriteRenderer>().sprite = alreadySearchSprite;
 
         Debug.Log("Search complete.");
         
