@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class SearchingSpot : MonoBehaviour
 {
     public bool playerIsSearchingHere = false;
