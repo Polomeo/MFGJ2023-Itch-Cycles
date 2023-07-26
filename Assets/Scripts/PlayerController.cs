@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     // Logic
     public bool isHiding = false;
     public bool isSearching = false;
+    public bool isClimbing = false;
     
     // Movement
     private Vector2 movement;
@@ -27,7 +28,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (!isHiding && !isSearching)
+        if (!isHiding && !isSearching && !isClimbing)
         {
             MoveCharacter();
         }
@@ -65,6 +66,7 @@ public class PlayerController : MonoBehaviour
     public void IsSearching(Vector3 position)
     {
         isSearching = true;
+        
         // Transports the player to the searching spot position
         gameObject.transform.position = new Vector3(position.x, transform.position.y, transform.position.z);
 
@@ -77,6 +79,30 @@ public class PlayerController : MonoBehaviour
         isSearching = false;
     }
     #endregion
+
+    public void IsClimbing(Vector3 position)
+    {
+        isClimbing = true;
+        
+        // Transports the player to the ladder spot position
+        gameObject.transform.position = new Vector3(position.x, transform.position.y, transform.position.z);
+
+        // Stops player movement
+        rb.velocity = Vector3.zero;
+
+        // Set the Rigidbody to Kinematic
+        // rb.isKinematic = true;
+
+    }
+
+    public void DoneClimbing()
+    {
+        isClimbing = false;
+        
+        // Set the Rigidbody back to Dynamic
+        // rb.isKinematic = false;
+    }
+
     void MoveCharacter()
     {
         // Movement

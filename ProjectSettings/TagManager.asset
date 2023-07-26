@@ -8,6 +8,7 @@ TagManager:
   - HideSpot
   - Enemy
   - Room
+  - Ladder
   layers:
   - Default
   - TransparentFX

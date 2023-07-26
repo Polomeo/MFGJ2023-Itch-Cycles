@@ -7,8 +7,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
-    public string playerCurrentRoom; // { get; private set; }
-    public string enemyCurrentRoom; //{ get; private set; }
+    public string playerCurrentRoom { get; private set; }
+    public string enemyCurrentRoom { get; private set; }
     
     // SINGLETON
     void Awake()
@@ -37,12 +37,15 @@ public class GameManager : MonoBehaviour
     {
         playerCurrentRoom = room;
         Debug.Log("Player current room: " + room);
+        
+        ComparePlayerAndEnemyRooms();
     }
-
     public void SetEnemyRoom(string room)
     {
         enemyCurrentRoom = room;
         Debug.Log("Enemy current room: " +  room);
+
+        ComparePlayerAndEnemyRooms();
     }
     private void ExitGame()
     {
@@ -51,5 +54,13 @@ public class GameManager : MonoBehaviour
 #else
         Application.Quit();
 #endif
+    }
+
+    private void ComparePlayerAndEnemyRooms()
+    {
+        if (playerCurrentRoom == enemyCurrentRoom)
+        {
+            Debug.Log("Game Over!");
+        }
     }
 }
