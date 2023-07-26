@@ -33,6 +33,14 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Room"))
+        {
+            GameManager.Instance.SetPlayerRoom(collision.gameObject.name);
+        }
+    }
+
     #region PLAYER_HIDDING
     public void HidePlayer(Vector3 position)
     {

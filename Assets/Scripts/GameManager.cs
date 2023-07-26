@@ -5,10 +5,22 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public static GameManager Instance;
+
+    public string playerCurrentRoom; // { get; private set; }
+    public string enemyCurrentRoom; //{ get; private set; }
+    
+    // SINGLETON
+    void Awake()
     {
-        
+        if (Instance != null && Instance != this) 
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            Instance = this;
+        }
     }
 
     // Update is called once per frame
@@ -21,6 +33,17 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void SetPlayerRoom(string room)
+    {
+        playerCurrentRoom = room;
+        Debug.Log("Player current room: " + room);
+    }
+
+    public void SetEnemyRoom(string room)
+    {
+        enemyCurrentRoom = room;
+        Debug.Log("Enemy current room: " +  room);
+    }
     private void ExitGame()
     {
 #if UNITY_EDITOR

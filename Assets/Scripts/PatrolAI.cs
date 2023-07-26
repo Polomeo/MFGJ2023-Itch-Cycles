@@ -5,29 +5,42 @@ using UnityEngine;
 public class PatrolAI : MonoBehaviour
 {
     [SerializeField] private float speed = 2.5f;
-    [SerializeField] float waitTime = 1.5f;
+    [SerializeField] private float waitTime = 1.5f;
     [SerializeField] private Transform[] waypoints;
 
+    [SerializeField] private float chaseSpeed = 5f;
+
     [SerializeField] private int currentWaypoint;
+
     private bool isWaiting;
+    private bool playerSpotted;
 
     void Update()
     {
-        // If not in current waypoint, go to it
-        if(transform.position != waypoints[currentWaypoint].position)
+        if(playerSpotted)
         {
-            transform.position = Vector2.MoveTowards(transform.position, 
-                waypoints[currentWaypoint].position, speed * Time.deltaTime);
+            Vector3 player = GameObject.FindWithTag("Player").transform.position;
+
+            // Go to player
+            transform.position = Vector2.MoveTowards(transform.position,
+                player, chaseSpeed * Time.deltaTime);
         }
-        else if (!isWaiting)
+        else
         {
-            StartCoroutine(WaitInRoom());
+            Patrol();
         }
+
     }
 
-    IEnumerator WaitInRoom()
+    public void PlayerIsSpotted()
+    {
+        playerSpotted = true;
+    }
+
+    private IEnumerator WaitInRoom()
     {
         isWaiting = true;
+
         // Wait for a few seconds in the room
         yield return new WaitForSeconds(waitTime);
         
@@ -41,4 +54,31 @@ public class PatrolAI : MonoBehaviour
 
         // [TO IMPLEMENT] Start wandering sound
     }
+
+    // Informs the Game Manager the current enemy room
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Room"))
+        {
+            GameManager.Instance.SetEnemyRoom(collision.gameObject.name);
+        }
+    }
+
+    private void Patrol()
+    {
+        // If not in current waypoint, go to it
+        if (transform.position != waypoints[currentWaypoint].position)
+        {
+            transform.position = Vector2.MoveTowards(transform.position,
+                waypoints[currentWaypoint].position, speed * Time.deltaTime);
+        }
+        else if (!isWaiting)
+        {
+            StartCoroutine(WaitInRoom());
+        }
+    }
+
+  
+
+    
 }

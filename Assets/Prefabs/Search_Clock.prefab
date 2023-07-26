@@ -110,7 +110,7 @@ MonoBehaviour:
         m_MethodName: SearchInSpot
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 6347162749417964327, guid: 8662f35576af63a499ff773803dcab16, type: 3}
+          m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
