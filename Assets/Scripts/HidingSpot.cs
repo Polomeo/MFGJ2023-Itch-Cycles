@@ -9,7 +9,14 @@ public class HidingSpot : MonoBehaviour
     [SerializeField] Sprite nonHideSprite;
     [SerializeField] Sprite hideSprite;
 
-    public void ToggleHidding(GameObject player)
+    private GameObject player;
+
+    private void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+    }
+
+    public void ToggleHidding()
     {
         PlayerController controller = player.GetComponent<PlayerController>();
 

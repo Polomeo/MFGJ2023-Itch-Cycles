@@ -17,7 +17,7 @@ public class PatrolAI : MonoBehaviour
 
     void Update()
     {
-        if(playerSpotted)
+        if(playerSpotted && GameManager.Instance.isGameActive)
         {
             Vector3 player = GameObject.FindWithTag("Player").transform.position;
 
@@ -29,11 +29,11 @@ public class PatrolAI : MonoBehaviour
             }
             else
             {
-                Debug.Log("Game Over!");
+                GameManager.Instance.GameOver();
             }
 
         }
-        else
+        else if (GameManager.Instance.isGameActive)
         {
             Patrol();
         }

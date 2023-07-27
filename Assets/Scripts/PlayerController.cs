@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     public bool isSearching = false;
     public bool isClimbing = false;
     public bool hasBeenFound = false;
+    public string currentRoom;
     
     // Movement
     private Vector2 movement;
@@ -24,7 +25,13 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-    }
+
+        // Set the initial state
+        isHiding = false;
+        isSearching = false;
+        isClimbing = false;
+        hasBeenFound = false;
+}
 
     // Update is called once per frame
     void FixedUpdate()
@@ -39,7 +46,8 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Room"))
         {
-            GameManager.Instance.SetPlayerRoom(collision.gameObject.name);
+            currentRoom = collision.gameObject.name;
+            GameManager.Instance.SetPlayerRoom(currentRoom);
         }
     }
 
@@ -60,6 +68,9 @@ public class PlayerController : MonoBehaviour
     {
         isHiding = false;
         gameObject.GetComponent<SpriteRenderer>().enabled = true;
+
+        // As the player exits its cover, we compare if they are in the same room;
+        GameManager.Instance.ComparePlayerAndEnemyRooms();
     }
     #endregion
 

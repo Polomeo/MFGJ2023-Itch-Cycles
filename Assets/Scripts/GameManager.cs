@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
     public string playerCurrentRoom { get; private set; }
     public string enemyCurrentRoom { get; private set; }
 
+    public bool isGameActive = true;
+
     GameObject player;
     GameObject enemy;
     
@@ -56,16 +58,14 @@ public class GameManager : MonoBehaviour
 
         ComparePlayerAndEnemyRooms();
     }
-    private void ExitGame()
+
+    public void GameOver()
     {
-#if UNITY_EDITOR
-        EditorApplication.ExitPlaymode();
-#else
-        Application.Quit();
-#endif
+        isGameActive = false;
+        Debug.Log("Game Over!");
     }
 
-    private void ComparePlayerAndEnemyRooms()
+    public void ComparePlayerAndEnemyRooms()
     {
         PlayerController playerController = player.GetComponent<PlayerController>();
         PatrolAI enemyController = enemy.GetComponent<PatrolAI>();
@@ -81,5 +81,14 @@ public class GameManager : MonoBehaviour
 
             // On contact --> Game Over
         }
+    }
+
+    private void ExitGame()
+    {
+#if UNITY_EDITOR
+        EditorApplication.ExitPlaymode();
+#else
+        Application.Quit();
+#endif
     }
 }

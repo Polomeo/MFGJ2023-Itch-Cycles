@@ -10,7 +10,14 @@ public class SearchingSpot : MonoBehaviour
     [SerializeField] float searchTime = 3f;
     [SerializeField] Sprite alreadySearchSprite;
 
-    public void SearchInSpot(GameObject player) 
+    private GameObject player;
+
+    private void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+    }
+
+    public void SearchInSpot() 
     {
         PlayerController controller = player.GetComponent<PlayerController>();
         if (controller != null)
