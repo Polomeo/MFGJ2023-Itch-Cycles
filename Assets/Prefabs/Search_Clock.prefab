@@ -101,7 +101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isInRange: 0
   interactKey: 101
-  interactText: 
+  interactText: Press E to Search
   interactAction:
     m_PersistentCalls:
       m_Calls:
