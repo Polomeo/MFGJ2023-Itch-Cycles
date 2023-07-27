@@ -3435,18 +3435,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1686361020}
     m_Modifications:
-    - target: {fileID: 619981424265287081, guid: ec8022310a160484890bad6165acc1d5, type: 3}
-      propertyPath: interactAction.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 619981424265287081, guid: ec8022310a160484890bad6165acc1d5, type: 3}
-      propertyPath: interactAction.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 619981424265287081, guid: ec8022310a160484890bad6165acc1d5, type: 3}
-      propertyPath: interactAction.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     - target: {fileID: 1742314586053433878, guid: ec8022310a160484890bad6165acc1d5, type: 3}
       propertyPath: m_Name
       value: Hide_Shower
@@ -3495,22 +3483,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8566589839523850678, guid: ec8022310a160484890bad6165acc1d5, type: 3}
-      propertyPath: m_Size.x
-      value: 2.5465326
-      objectReference: {fileID: 0}
-    - target: {fileID: 8566589839523850678, guid: ec8022310a160484890bad6165acc1d5, type: 3}
-      propertyPath: m_Size.y
-      value: 2.7225285
-      objectReference: {fileID: 0}
-    - target: {fileID: 8566589839523850678, guid: ec8022310a160484890bad6165acc1d5, type: 3}
-      propertyPath: m_Offset.x
-      value: -0.0323112
-      objectReference: {fileID: 0}
-    - target: {fileID: 8566589839523850678, guid: ec8022310a160484890bad6165acc1d5, type: 3}
-      propertyPath: m_Offset.y
-      value: -0.71630526
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec8022310a160484890bad6165acc1d5, type: 3}
 --- !u!1001 &8361022124535659696
@@ -3523,18 +3495,6 @@ PrefabInstance:
     - target: {fileID: 8361022124689230418, guid: 2c7bb4a902595cc4f838c7711fe8b821, type: 3}
       propertyPath: m_Name
       value: Search_Clock
-      objectReference: {fileID: 0}
-    - target: {fileID: 8361022124689230420, guid: 2c7bb4a902595cc4f838c7711fe8b821, type: 3}
-      propertyPath: interactAction.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8361022124689230420, guid: 2c7bb4a902595cc4f838c7711fe8b821, type: 3}
-      propertyPath: interactAction.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8361022124689230420, guid: 2c7bb4a902595cc4f838c7711fe8b821, type: 3}
-      propertyPath: interactAction.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 8361022124689230422, guid: 2c7bb4a902595cc4f838c7711fe8b821, type: 3}
       propertyPath: m_RootOrder

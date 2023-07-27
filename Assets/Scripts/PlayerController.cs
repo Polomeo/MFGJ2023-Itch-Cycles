@@ -78,6 +78,7 @@ public class PlayerController : MonoBehaviour
     public void IsSearching(Vector3 position)
     {
         isSearching = true;
+        animator.SetBool("b_isInteracting", isSearching);
         
         // Transports the player to the searching spot position
         gameObject.transform.position = new Vector3(position.x, transform.position.y, transform.position.z);
@@ -89,6 +90,7 @@ public class PlayerController : MonoBehaviour
     public void DoneSearching()
     {
         isSearching = false;
+        animator.SetBool("b_isInteracting", isSearching);
     }
     #endregion
 
@@ -96,7 +98,8 @@ public class PlayerController : MonoBehaviour
     public void IsClimbing(Vector3 position)
     {
         isClimbing = true;
-        
+        animator.SetBool("b_isInteracting", isClimbing);
+
         // Transports the player to the ladder spot position
         gameObject.transform.position = new Vector3(position.x, transform.position.y, transform.position.z);
 
@@ -111,7 +114,8 @@ public class PlayerController : MonoBehaviour
     public void DoneClimbing()
     {
         isClimbing = false;
-        
+        animator.SetBool("b_isInteracting", isClimbing);
+
         // Set the Rigidbody back to Dynamic
         rb.isKinematic = false;
     }

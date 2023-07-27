@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 0e4600bf867eb604e8c159a7c74fa20b
+guid: 83bb5851ac4bd4341aabd10fd4af9704
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -70,7 +70,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -117,13 +117,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: girl_0
+      name: girl2_walk_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 28
-        height: 42
+        width: 30
+        height: 43
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -131,20 +131,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9d35c28ff2ffd1444927fe54557bda18
-      internalID: 1523018731
+      spriteID: 59327e0bb961c0d418e4c5df6f858bb8
+      internalID: 988902353
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: girl_1
+      name: girl2_walk_1
       rect:
         serializedVersion: 2
         x: 30
         y: 0
-        width: 28
-        height: 42
+        width: 30
+        height: 43
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -152,20 +152,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a8bb9f0235e075a48b4dde9ebf17eee8
-      internalID: 134549658
+      spriteID: d85dc7c72f469b444a84620f4dd97577
+      internalID: -322763733
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: girl_2
+      name: girl2_walk_2
       rect:
         serializedVersion: 2
         x: 60
         y: 0
-        width: 28
-        height: 42
+        width: 30
+        height: 43
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -173,20 +173,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 15256ea6a6202174b8d96555f7eeb423
-      internalID: 424210943
+      spriteID: c7a7d1002fd9ea843963c81eeab7e67b
+      internalID: -1443610977
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: girl_3
+      name: girl2_walk_3
       rect:
         serializedVersion: 2
         x: 90
         y: 0
-        width: 28
-        height: 42
+        width: 30
+        height: 43
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -194,20 +194,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d898012ec7b23d64eb037d391b902f30
-      internalID: -723058414
+      spriteID: fa44aefcd5a8a6f4a9a10d8d368271df
+      internalID: -1969189137
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: girl_4
+      name: girl2_walk_4
       rect:
         serializedVersion: 2
         x: 120
         y: 0
-        width: 28
-        height: 42
+        width: 30
+        height: 43
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -215,20 +215,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cc50f385c38166f418b2c662d906dd8a
-      internalID: -1770455824
+      spriteID: aa6652f50288a5f47a502ec329d08e58
+      internalID: -1830841333
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: girl_5
+      name: girl2_walk_5
       rect:
         serializedVersion: 2
         x: 150
         y: 0
-        width: 28
-        height: 42
+        width: 30
+        height: 43
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -236,8 +236,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 574eb32ec80d50f4dbdaccb9bb656829
-      internalID: 386537263
+      spriteID: 20fffb332e46b9141ae367efbe7b8a09
+      internalID: 1950493582
       vertices: []
       indices: 
       edges: []
@@ -253,12 +253,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      girl_3: -723058414
-      girl_1: 134549658
-      girl_5: 386537263
-      girl_2: 424210943
-      girl_0: 1523018731
-      girl_4: -1770455824
+      girl2_walk_0: 988902353
+      girl2_walk_5: 1950493582
+      girl2_walk_2: -1443610977
+      girl2_walk_3: -1969189137
+      girl2_walk_1: -322763733
+      girl2_walk_4: -1830841333
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
