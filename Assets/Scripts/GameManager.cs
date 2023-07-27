@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -42,6 +43,15 @@ public class GameManager : MonoBehaviour
         {
             ExitGame();
         }
+
+        // Restart Game
+        if(!isGameActive)
+        {
+            if(Input.GetKeyDown(KeyCode.Space))
+            {
+                RestartGame();
+            }
+        }
     }
 
     public void SetPlayerRoom(string room)
@@ -62,7 +72,13 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         isGameActive = false;
+        UIManager.Instance.ShowGameOverCanvas();
         Debug.Log("Game Over!");
+    }
+
+    public void RestartGame()
+    {
+        SceneManager.LoadScene("Main");
     }
 
     public void ComparePlayerAndEnemyRooms()

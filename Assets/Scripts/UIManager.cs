@@ -8,6 +8,7 @@ public class UIManager : MonoBehaviour
     public static UIManager Instance;
 
     [SerializeField] private TextMeshProUGUI interactionText;
+    [SerializeField] private GameObject gameOverCanvas;
 
     // SINGLETON
     void Awake()
@@ -25,6 +26,7 @@ public class UIManager : MonoBehaviour
     private void Start()
     {
         interactionText.gameObject.SetActive(false);
+        gameOverCanvas.SetActive(false);
     }
 
     public void DisplayInteractionText(string text)
@@ -36,9 +38,13 @@ public class UIManager : MonoBehaviour
     {
         interactionText.gameObject.SetActive(true);
     }
-
     public void HideText()
     {
         interactionText.gameObject.SetActive(false);
+    }
+
+    public void ShowGameOverCanvas()
+    {
+        gameOverCanvas.SetActive(true);
     }
 }
