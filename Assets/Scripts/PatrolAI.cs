@@ -21,9 +21,17 @@ public class PatrolAI : MonoBehaviour
         {
             Vector3 player = GameObject.FindWithTag("Player").transform.position;
 
-            // Go to player
-            transform.position = Vector2.MoveTowards(transform.position,
-                player, chaseSpeed * Time.deltaTime);
+            if (transform.position != player)
+            {
+                // Go to player
+                transform.position = Vector2.MoveTowards(transform.position,
+                    player, chaseSpeed * Time.deltaTime);
+            }
+            else
+            {
+                Debug.Log("Game Over!");
+            }
+
         }
         else
         {

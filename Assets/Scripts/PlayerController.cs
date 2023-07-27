@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     public bool isHiding = false;
     public bool isSearching = false;
     public bool isClimbing = false;
+    public bool hasBeenFound = false;
     
     // Movement
     private Vector2 movement;
@@ -28,7 +29,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (!isHiding && !isSearching && !isClimbing)
+        if (!isHiding && !isSearching && !isClimbing && !hasBeenFound)
         {
             MoveCharacter();
         }
@@ -80,6 +81,7 @@ public class PlayerController : MonoBehaviour
     }
     #endregion
 
+    #region PLAYER_LADDER
     public void IsClimbing(Vector3 position)
     {
         isClimbing = true;
@@ -90,8 +92,8 @@ public class PlayerController : MonoBehaviour
         // Stops player movement
         rb.velocity = Vector3.zero;
 
-        // Set the Rigidbody to Kinematic
-        // rb.isKinematic = true;
+        // Set the Rigidbody to Kinematic so can be moved from here
+        rb.isKinematic = true;
 
     }
 
@@ -100,9 +102,18 @@ public class PlayerController : MonoBehaviour
         isClimbing = false;
         
         // Set the Rigidbody back to Dynamic
-        // rb.isKinematic = false;
+        rb.isKinematic = false;
     }
+    #endregion
 
+    public void PlayerHasBeenFound()
+    {
+        // Player has been found by Manny (the enemy)
+        hasBeenFound = true;
+
+        // Freeze
+        rb.velocity = Vector3.zero;
+    }
     void MoveCharacter()
     {
         // Movement

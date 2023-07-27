@@ -6,9 +6,12 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
-
+    
     public string playerCurrentRoom { get; private set; }
     public string enemyCurrentRoom { get; private set; }
+
+    GameObject player;
+    GameObject enemy;
     
     // SINGLETON
     void Awake()
@@ -21,6 +24,12 @@ public class GameManager : MonoBehaviour
         {
             Instance = this;
         }
+    }
+
+    private void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+        enemy = GameObject.FindGameObjectWithTag("Enemy");
     }
 
     // Update is called once per frame
@@ -58,9 +67,19 @@ public class GameManager : MonoBehaviour
 
     private void ComparePlayerAndEnemyRooms()
     {
-        if (playerCurrentRoom == enemyCurrentRoom)
-        {
-            Debug.Log("Game Over!");
+        PlayerController playerController = player.GetComponent<PlayerController>();
+        PatrolAI enemyController = enemy.GetComponent<PatrolAI>();
+
+        // If they are in the same room, and the player is not hidding
+        if (playerCurrentRoom == enemyCurrentRoom && !playerController.isHiding)
+        { 
+            // Freeze player position
+            playerController.PlayerHasBeenFound();
+
+            // Enemy charges towards player
+            enemyController.PlayerIsSpotted();
+
+            // On contact --> Game Over
         }
     }
 }
