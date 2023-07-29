@@ -85,6 +85,9 @@ public class PlayerController : MonoBehaviour
 
         // Stops player movement
         rb.velocity = Vector3.zero;
+
+        // Searching
+        Debug.Log("Is searching");
     }
 
     public void DoneSearching()
