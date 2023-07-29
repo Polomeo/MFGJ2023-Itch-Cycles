@@ -6,8 +6,6 @@ using UnityEngine;
 public class HidingSpot : MonoBehaviour
 {
     public bool playerIsHiddenHere;
-    [SerializeField] Sprite nonHideSprite;
-    [SerializeField] Sprite hideSprite;
 
     private GameObject player;
     private Animator animator;
