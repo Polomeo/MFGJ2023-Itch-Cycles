@@ -131,6 +131,9 @@ public class PlayerController : MonoBehaviour
 
         // Freeze
         rb.velocity = Vector3.zero;
+
+        // Animation
+        animator.SetBool("b_hasBeenFound", hasBeenFound);
     }
     void MoveCharacter()
     {
