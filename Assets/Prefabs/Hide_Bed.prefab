@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8431570751736645199}
   - component: {fileID: 827199076648909392}
   - component: {fileID: 8064758688811466025}
+  - component: {fileID: 1204550381304267227}
   m_Layer: 6
   m_Name: Hide_Bed
   m_TagString: HideSpot
@@ -158,3 +159,23 @@ MonoBehaviour:
   playerIsHiddenHere: 0
   nonHideSprite: {fileID: 434088839, guid: 992ef5bda2338b144bf6ce3dbc63ee37, type: 3}
   hideSprite: {fileID: 1884724031, guid: 992ef5bda2338b144bf6ce3dbc63ee37, type: 3}
+--- !u!95 &1204550381304267227
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2003434559037666799}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5ef5ca27c720f6e47b7430f426c52bb5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

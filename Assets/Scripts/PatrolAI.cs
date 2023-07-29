@@ -23,7 +23,7 @@ public class PatrolAI : MonoBehaviour
 
             if (transform.position != player)
             {
-                // Go to player
+                // Run to player
                 transform.position = Vector2.MoveTowards(transform.position,
                     player, chaseSpeed * Time.deltaTime);
             }

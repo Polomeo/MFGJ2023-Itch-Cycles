@@ -10,10 +10,13 @@ public class HidingSpot : MonoBehaviour
     [SerializeField] Sprite hideSprite;
 
     private GameObject player;
+    private Animator animator;
 
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        animator = GetComponent<Animator>();
+
     }
 
     public void ToggleHidding()
@@ -40,20 +43,13 @@ public class HidingSpot : MonoBehaviour
     private void HidePlayerInHere()
     {
         playerIsHiddenHere = true;
-
-        // [PLACEHOLDER] show hidden animation
-        gameObject.GetComponent<SpriteRenderer>().sprite = hideSprite;
-
-        Debug.Log("Player hid in " + gameObject.name);
+        animator.SetBool("b_PlayerIsHiddenHere", playerIsHiddenHere);
     }
 
     private void PlayerExitHideSpot()
     {
         playerIsHiddenHere = false;
-        Debug.Log("Player came out of " + gameObject.name);
-        // show hidden animation
-        gameObject.GetComponent<SpriteRenderer>().sprite = nonHideSprite;
-
+        animator.SetBool("b_PlayerIsHiddenHere", playerIsHiddenHere);
     }
 
 }

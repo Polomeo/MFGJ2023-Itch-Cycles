@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8566589839523850678}
   - component: {fileID: 619981424265287081}
   - component: {fileID: 7785483176151225040}
+  - component: {fileID: 7899632764814172967}
   m_Layer: 6
   m_Name: Hide_Shower
   m_TagString: HideSpot
@@ -158,3 +159,23 @@ MonoBehaviour:
   playerIsHiddenHere: 0
   nonHideSprite: {fileID: -592423038, guid: 392116fd914167c448a2ed5478ca1601, type: 3}
   hideSprite: {fileID: 344405887, guid: 392116fd914167c448a2ed5478ca1601, type: 3}
+--- !u!95 &7899632764814172967
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1742314586053433878}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 22100000, guid: e5587131f812fc74b8ef40ddf27cb11a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

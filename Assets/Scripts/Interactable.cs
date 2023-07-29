@@ -16,14 +16,17 @@ public class Interactable : MonoBehaviour
     public string interactText;
     public UnityEvent interactAction;
 
+    private PlayerController playerController;
+
     // When enters the trigger, sets "isInRange" to True
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        // If the object collides with the player, and the player hasn't been found
+        
         if(collision.gameObject.CompareTag("Player"))
         {
             isInRange = true;
-            Debug.Log("Player enter range of " +  gameObject.name);
-
+            
             // UI
             UIManager.Instance.DisplayInteractionText(interactText);
         }
@@ -35,17 +38,21 @@ public class Interactable : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             isInRange = false;
-            Debug.Log("Player exit range of " + gameObject.name);
 
             // UI
             UIManager.Instance.HideText();
         }
     }
 
+    private void Start()
+    {
+        playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+    }
+
     private void Update()
     {
-        // If in range, and press the key, invoke the listeners (set in inspector)
-        if (isInRange)
+        // If in range and not found, press the key to invoke the listeners (set in inspector)
+        if (isInRange && !playerController.hasBeenFound)
         {
             if(Input.GetKeyDown(interactKey))
             {

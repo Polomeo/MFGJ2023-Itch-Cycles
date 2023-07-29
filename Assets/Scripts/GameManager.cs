@@ -68,19 +68,6 @@ public class GameManager : MonoBehaviour
 
         ComparePlayerAndEnemyRooms();
     }
-
-    public void GameOver()
-    {
-        isGameActive = false;
-        UIManager.Instance.ShowGameOverCanvas();
-        Debug.Log("Game Over!");
-    }
-
-    public void RestartGame()
-    {
-        SceneManager.LoadScene("Main");
-    }
-
     public void ComparePlayerAndEnemyRooms()
     {
         PlayerController playerController = player.GetComponent<PlayerController>();
@@ -97,6 +84,17 @@ public class GameManager : MonoBehaviour
 
             // On contact --> Game Over
         }
+    }
+
+
+    public void GameOver()
+    {
+        isGameActive = false;
+        UIManager.Instance.ShowGameOverCanvas();
+    }
+    public void RestartGame()
+    {
+        SceneManager.LoadScene("Main");
     }
 
     private void ExitGame()
