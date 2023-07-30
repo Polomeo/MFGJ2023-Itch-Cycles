@@ -9,6 +9,9 @@ TagManager:
   - Enemy
   - Room
   - Ladder
+  - WaypointLevel0
+  - Waypointlevel1
+  - WaypointLevel2
   layers:
   - Default
   - TransparentFX
