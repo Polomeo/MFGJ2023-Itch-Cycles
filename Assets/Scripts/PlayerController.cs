@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // Components
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
 
@@ -61,13 +62,19 @@ public class PlayerController : MonoBehaviour
 
         // Stops player movement
         rb.velocity = Vector3.zero;
+
+        // Disable renderer
         gameObject.GetComponent<SpriteRenderer>().enabled = false;
+
+        // Set Rigidbody to Kinematic to avoid colliding with Enemy (if passes by)
+        // rb.isKinematic = true;
     }
 
     public void UnHidePlayer()
     {
         isHiding = false;
         gameObject.GetComponent<SpriteRenderer>().enabled = true;
+        // rb.isKinematic = false;
 
         // As the player exits its cover, we compare if they are in the same room;
         GameManager.Instance.ComparePlayerAndEnemyRooms();

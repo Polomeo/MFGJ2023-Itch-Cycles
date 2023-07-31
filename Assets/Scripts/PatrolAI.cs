@@ -60,14 +60,6 @@ public class PatrolAI : MonoBehaviour
 
     }
 
-    // Manny' s behaviour rework
-
-    // isLadderNeeded? (nextWaypoint.y != currentWaypoint.y)
-
-    // True: go to closer ladder, Rigidbody kinematic, move to the other side of ladder, Rigidbody dynamic, isLadderNeeded false
-
-    // False: go to waypoint and wait
-
     // Informs the Game Manager the current enemy room
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -80,6 +72,8 @@ public class PatrolAI : MonoBehaviour
     {
         playerSpotted = true;
     }
+
+    #region PATROL_AI
     private void Patrol()
     {
         if (needClimbing)
@@ -118,6 +112,10 @@ public class PatrolAI : MonoBehaviour
         // Reset to the first waypoint
         if (currentWaypoint == waypoints.Length)
         {
+            // Reverse the array of waypoints
+            System.Array.Reverse(waypoints);
+            
+            // Set the waypoint to the first of the array
             currentWaypoint = 0;
         }
 
@@ -137,21 +135,37 @@ public class PatrolAI : MonoBehaviour
         {
             Debug.Log("Climbing needed");
             
-            // Select closer ladder spot and the next closer to it
+            // Select closer ladder spot
             for (int i = 0; i < ladderSpots.Length; i++)
             {
                 distance = Vector3.Distance(transform.position, ladderSpots[i].transform.position);
 
                 if (distance < nearestDistance)
                 {
-                    // sets the former closer one in the second closer one position
-                    secondCloserLadderSpot = closerLadderSpot;
-
                     // sets the closer one
                     closerLadderSpot = ladderSpots[i];
 
                     // sets the distance
                     nearestDistance = distance;
+                }
+            }
+
+            // Select the second closer ladder spot (the other end of the ladder)
+            if(closerLadderSpot != null && secondCloserLadderSpot == null) 
+            {
+                Debug.Log("Enemy: Searching for Second Closer Ladder Spot...");
+                nearestDistance = 10000;
+
+                for (int i = 0; i < ladderSpots.Length; i++)
+                {
+                    distance = Vector3.Distance(transform.position, ladderSpots[i].transform.position);
+
+                    // If the distance is lesser than the nearest and is not the nearest
+                    if(distance < nearestDistance && ladderSpots[i] != closerLadderSpot)
+                    {
+                        secondCloserLadderSpot = ladderSpots[i];
+                        nearestDistance = distance;
+                    }
                 }
             }
             
@@ -181,7 +195,7 @@ public class PatrolAI : MonoBehaviour
             // if reached the end of the ladder
             if(transform.position.y == secondCloserLadderSpot.transform.position.y)
             {
-                // Return to normal
+                // Return to normal behaviour
                 closerLadderSpot = null;
                 secondCloserLadderSpot = null;
                 distance = 0;
@@ -192,10 +206,11 @@ public class PatrolAI : MonoBehaviour
             }
         }
     }
+    #endregion
 
 
 
-  
 
-    
+
+
 }
