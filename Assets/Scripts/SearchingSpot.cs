@@ -51,8 +51,6 @@ public class SearchingSpot : MonoBehaviour
     IEnumerator Searching(PlayerController controller)
     {
         Debug.Log("Searching...");
-        // [PLACEHOLDER] Change to search animation
-        // gameObject.GetComponent<SpriteRenderer>().color = Color.yellow;
         
         // Tell the player that "is searching" and pass this GameObject position
         controller.IsSearching(transform.position);

@@ -12,6 +12,7 @@ TagManager:
   - WaypointLevel0
   - Waypointlevel1
   - WaypointLevel2
+  - BurningSpot
   layers:
   - Default
   - TransparentFX

@@ -128,17 +128,20 @@ public class PlayerController : MonoBehaviour
 
     public void DollFound()
     {
-        isHoldingADoll = true;
+        if(dollsInHand.Count > 0)
+        {
+            isHoldingADoll = true;
 
-        // Activate a Random doll in hand
-        int randomIndex = Random.Range(0, dollsInHand.Count);
-        dollsInHand[randomIndex].GetComponent<Renderer>().enabled = true;
+            // Activate a Random doll in hand
+            int randomIndex = Random.Range(0, dollsInHand.Count);
+            dollsInHand[randomIndex].GetComponent<Renderer>().enabled = true;
         
-        // Store doll index to remove from the list later
-        dollHoldingIndex = randomIndex;
+            // Store doll index to remove from the list later
+            dollHoldingIndex = randomIndex;
 
-        // Audio: Play "Doll found" sound
-        audioSource.PlayOneShot(dollFoundSFX);
+            // Audio: Play "Doll found" sound
+            audioSource.PlayOneShot(dollFoundSFX);
+        }
 
     }
 
@@ -175,6 +178,23 @@ public class PlayerController : MonoBehaviour
         rb.isKinematic = false;
     }
     #endregion
+
+    public void BurningDoll()
+    {
+        // [PLACEHOLDER] Play burning animation
+
+        // Deactivate dolls renderer
+        dollsInHand[dollHoldingIndex].GetComponent<Renderer>().enabled = false;
+        
+        // Remove Doll from List so it can't be found again
+        dollsInHand.RemoveAt(dollHoldingIndex);
+        
+        // Reset parameters
+        dollHoldingIndex = 0;
+        isHoldingADoll = false;
+
+        Debug.Log("Doll burned!");
+    }
 
     public void PlayerHasBeenFound()
     {
