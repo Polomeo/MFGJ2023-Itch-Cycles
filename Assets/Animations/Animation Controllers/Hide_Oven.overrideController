@@ -1,0 +1,15 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Hide_Oven
+  m_Controller: {fileID: 9100000, guid: 5ef5ca27c720f6e47b7430f426c52bb5, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: ca9890dfa5f570149892cab9e2fc6928, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 473cb298377f3cb4d87a584db2ce7e03, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 116bd38bdc2f61242a91ee0ae122751c, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 8f3dcf171b1d4684eafab8748c288066, type: 2}

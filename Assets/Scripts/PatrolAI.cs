@@ -13,6 +13,7 @@ public class PatrolAI : MonoBehaviour
     [SerializeField] private float minWaypointDistance = 0.5f;
     [SerializeField] private int currentWaypoint;
     [SerializeField] private float chaseSpeed = 5f;
+    [SerializeField] private float jumpAttackDistance = 3f;
 
     // Ladders
     [SerializeField] private GameObject[] ladderSpots;
@@ -26,13 +27,16 @@ public class PatrolAI : MonoBehaviour
     private bool needClimbing;
     private bool isClimbing;
     private bool playerSpotted;
+    private bool isAttacking;
 
     // Components
     private Rigidbody2D rb;
+    private Animator animator;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
 
     void Update()
@@ -40,15 +44,30 @@ public class PatrolAI : MonoBehaviour
         if(playerSpotted && GameManager.Instance.isGameActive)
         {
             Vector3 player = GameObject.FindWithTag("Player").transform.position;
+            rb.isKinematic = true;
 
             if (transform.position != player)
             {
                 // Run to player
                 transform.position = Vector2.MoveTowards(transform.position,
                     player, chaseSpeed * Time.deltaTime);
+
+                // Attack animation
+                float distance = Vector3.Distance(transform.position, player);
+                Debug.Log("Distance to player: " + distance.ToString());
+
+                if (distance < jumpAttackDistance && !isAttacking)
+                {
+                    isAttacking = true;
+                    animator.SetBool("b_isAttacking", isAttacking);
+                }
             }
             else
             {
+                isAttacking = false;
+                animator.SetBool("b_isAttacking", isAttacking);
+                rb.isKinematic = false;
+
                 GameManager.Instance.GameOver();
             }
 
@@ -91,6 +110,17 @@ public class PatrolAI : MonoBehaviour
             {
                 transform.position = Vector2.MoveTowards(transform.position,
                     waypoints[currentWaypoint].position, speed * Time.deltaTime);
+
+                // Animation - Look at Waypoint
+                if (waypoints[currentWaypoint].position.x < transform.position.x)
+                {
+                    transform.localScale = new Vector3(-1.0f, 1.0f, 1.0f);
+                }
+                else if (waypoints[currentWaypoint].position.x > transform.position.x)
+                {
+                    transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+                }
+                
             }
             else if (!isWaiting)
             {
@@ -102,6 +132,9 @@ public class PatrolAI : MonoBehaviour
     private IEnumerator WaitInRoom()
     {
         isWaiting = true;
+
+        // Animation
+        animator.SetBool("b_isWaiting", isWaiting);
 
         // Wait for a few seconds in the room
         yield return new WaitForSeconds(waitTime);
@@ -120,6 +153,7 @@ public class PatrolAI : MonoBehaviour
         }
 
         isWaiting = false;
+        animator.SetBool("b_isWaiting", isWaiting);
 
         // check if is a ladder is needed for the next waypoint
         IsLadderNeeded();
