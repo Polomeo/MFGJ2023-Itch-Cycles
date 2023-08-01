@@ -8,13 +8,18 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     
+    // Player and Enemy current room
     public string playerCurrentRoom { get; private set; }
     public string enemyCurrentRoom { get; private set; }
 
+    // Gameplay loop conditions
     public bool isGameActive = true;
 
-    GameObject player;
-    GameObject enemy;
+    // GameObjects
+    public GameObject player;
+    public GameObject enemy;
+    public List<GameObject> searchSpots;
+
     
     // SINGLETON
     void Awake()
@@ -33,6 +38,7 @@ public class GameManager : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
         enemy = GameObject.FindGameObjectWithTag("Enemy");
+        searchSpots = new List<GameObject>(GameObject.FindGameObjectsWithTag("SearchSpot"));
     }
 
     // Update is called once per frame

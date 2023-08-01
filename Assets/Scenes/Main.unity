@@ -1998,7 +1998,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 807497510}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.102391, y: 4.87662, z: -10}
+  m_LocalPosition: {x: -9.202575, y: 4.8786697, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2685,10 +2685,6 @@ PrefabInstance:
     - target: {fileID: 8212037370104160085, guid: d3c0fa41f836f3b45a7c27d22ba592b3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8212037370104160086, guid: d3c0fa41f836f3b45a7c27d22ba592b3, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d3c0fa41f836f3b45a7c27d22ba592b3, type: 3}
@@ -3879,6 +3875,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isGameActive: 1
+  player: {fileID: 0}
+  enemy: {fileID: 0}
+  searchSpots: []
 --- !u!4 &2116543676
 Transform:
   m_ObjectHideFlags: 0
@@ -4042,10 +4041,6 @@ PrefabInstance:
     - target: {fileID: 7728106718387807155, guid: 8b9fee0e2d549094c98d9fdcb5c61e49, type: 3}
       propertyPath: m_RootOrder
       value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7728106718387807155, guid: 8b9fee0e2d549094c98d9fdcb5c61e49, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7728106718387807155, guid: 8b9fee0e2d549094c98d9fdcb5c61e49, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4422,10 +4417,6 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5227804489933251834, guid: 04f31b3a20cedb84f8b8533d55d6176e, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5227804489933251834, guid: 04f31b3a20cedb84f8b8533d55d6176e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.51
       objectReference: {fileID: 0}
@@ -4728,6 +4719,14 @@ PrefabInstance:
     - target: {fileID: 8361022124689230418, guid: 2c7bb4a902595cc4f838c7711fe8b821, type: 3}
       propertyPath: m_Name
       value: Search_Clock
+      objectReference: {fileID: 0}
+    - target: {fileID: 8361022124689230419, guid: 2c7bb4a902595cc4f838c7711fe8b821, type: 3}
+      propertyPath: hasDoll
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8361022124689230419, guid: 2c7bb4a902595cc4f838c7711fe8b821, type: 3}
+      propertyPath: thisSpotHasADoll
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8361022124689230422, guid: 2c7bb4a902595cc4f838c7711fe8b821, type: 3}
       propertyPath: m_RootOrder

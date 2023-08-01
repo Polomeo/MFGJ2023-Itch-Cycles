@@ -5,10 +5,12 @@ using UnityEngine;
 [RequireComponent(typeof(AudioSource))]
 public class SearchingSpot : MonoBehaviour
 {
+    // Search logic
     public bool playerIsSearchingHere = false;
     public bool alreadySearch = false;
     [SerializeField] float searchTime = 3f;
     [SerializeField] Sprite alreadySearchSprite;
+    [SerializeField] bool thisSpotHasADoll;
 
     private GameObject player;
 
@@ -27,7 +29,7 @@ public class SearchingSpot : MonoBehaviour
         PlayerController controller = player.GetComponent<PlayerController>();
         if (controller != null)
         {
-            if (!playerIsSearchingHere && !alreadySearch)
+            if (!playerIsSearchingHere && !alreadySearch && !controller.isHoldingADoll)
             {
                 StartCoroutine(Searching(controller));
                 playerIsSearchingHere = true;
@@ -58,8 +60,14 @@ public class SearchingSpot : MonoBehaviour
         // Wait for the search to finish
         yield return new WaitForSeconds(searchTime);
 
-        // [PLACEHOLDER] Change to "already searched" sprite
+        // Change to "already searched" sprite
         gameObject.GetComponent<SpriteRenderer>().sprite = alreadySearchSprite;
+
+        // If this searching spot has a doll, give it to the player
+        if (thisSpotHasADoll)
+        {
+            controller.DollFound();
+        }
 
         Debug.Log("Search complete.");
         

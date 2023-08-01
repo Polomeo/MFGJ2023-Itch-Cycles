@@ -7,24 +7,31 @@ public class PlayerController : MonoBehaviour
 {
     // Logic
     [Header("State bools")]
-    public bool isHiding = false;
-    public bool isSearching = false;
-    public bool isClimbing = false;
-    public bool hasBeenFound = false;
+    public bool isHiding;
+    public bool isSearching;
+    public bool isClimbing;
+    public bool hasBeenFound;
+    public bool isHoldingADoll;
     [HideInInspector] public string currentRoom;
     
     // Movement
     private Vector2 movement;
     private float movementSpeed = 3f;
     private Rigidbody2D rb;
+
+    // Dolls
+    [Header("Dolls")]
+    public List<GameObject> dollsInHand;
+    private int dollHoldingIndex;
     
     // Animation
     private Animator animator;
 
-    // Sound
-    [Header("Audio")]
-    private AudioSource audioSource;
+    // Audio
+    [Header("Audio Clips")]
     [SerializeField] AudioClip girlCryingCaptureSFX;
+    [SerializeField] AudioClip dollFoundSFX;
+    private AudioSource audioSource;
 
     // Start is called before the first frame update
     void Start()
@@ -39,6 +46,13 @@ public class PlayerController : MonoBehaviour
         isSearching = false;
         isClimbing = false;
         hasBeenFound = false;
+        isHoldingADoll = false;
+        
+        // Hide de dolls in hand
+        foreach (GameObject go in dollsInHand)
+        {
+            go.GetComponent<Renderer>().enabled = false;
+        }
 }
 
     // Update is called once per frame
@@ -73,15 +87,23 @@ public class PlayerController : MonoBehaviour
         // Disable renderer
         gameObject.GetComponent<SpriteRenderer>().enabled = false;
 
-        // Set Rigidbody to Kinematic to avoid colliding with Enemy (if passes by)
-        // rb.isKinematic = true;
+        // Hide doll
+        if(isHoldingADoll)
+        {
+            dollsInHand[dollHoldingIndex].GetComponent<Renderer>().enabled = false;
+        }
     }
 
     public void UnHidePlayer()
     {
         isHiding = false;
         gameObject.GetComponent<SpriteRenderer>().enabled = true;
-        // rb.isKinematic = false;
+
+        // Show doll again
+        if (isHoldingADoll)
+        {
+            dollsInHand[dollHoldingIndex].GetComponent<Renderer>().enabled = true;
+        }
 
         // As the player exits its cover, we compare if they are in the same room;
         GameManager.Instance.ComparePlayerAndEnemyRooms();
@@ -102,6 +124,22 @@ public class PlayerController : MonoBehaviour
 
         // Searching
         Debug.Log("Is searching");
+    }
+
+    public void DollFound()
+    {
+        isHoldingADoll = true;
+
+        // Activate a Random doll in hand
+        int randomIndex = Random.Range(0, dollsInHand.Count);
+        dollsInHand[randomIndex].GetComponent<Renderer>().enabled = true;
+        
+        // Store doll index to remove from the list later
+        dollHoldingIndex = randomIndex;
+
+        // Audio: Play "Doll found" sound
+        audioSource.PlayOneShot(dollFoundSFX);
+
     }
 
     public void DoneSearching()
