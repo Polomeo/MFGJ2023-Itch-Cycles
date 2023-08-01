@@ -6,11 +6,12 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     // Logic
+    [Header("State bools")]
     public bool isHiding = false;
     public bool isSearching = false;
     public bool isClimbing = false;
     public bool hasBeenFound = false;
-    public string currentRoom;
+    [HideInInspector] public string currentRoom;
     
     // Movement
     private Vector2 movement;
@@ -20,12 +21,18 @@ public class PlayerController : MonoBehaviour
     // Animation
     private Animator animator;
 
+    // Sound
+    [Header("Audio")]
+    private AudioSource audioSource;
+    [SerializeField] AudioClip girlCryingCaptureSFX;
+
     // Start is called before the first frame update
     void Start()
     {
         // Components
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
 
         // Set the initial state
         isHiding = false;
@@ -141,6 +148,9 @@ public class PlayerController : MonoBehaviour
 
         // Animation
         animator.SetBool("b_hasBeenFound", hasBeenFound);
+
+        // Audio
+        audioSource.PlayOneShot(girlCryingCaptureSFX);
     }
     void MoveCharacter()
     {

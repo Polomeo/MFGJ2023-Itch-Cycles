@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class HidingSpot : MonoBehaviour
 {
     public bool playerIsHiddenHere;
@@ -10,11 +11,15 @@ public class HidingSpot : MonoBehaviour
     private GameObject player;
     private Animator animator;
 
+    // Audio
+    private AudioSource audioSource;
+    [SerializeField] private AudioClip hiddingClip;
+
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         animator = GetComponent<Animator>();
-
+        audioSource = GetComponent<AudioSource>();
     }
 
     public void ToggleHidding()
@@ -42,6 +47,12 @@ public class HidingSpot : MonoBehaviour
     {
         playerIsHiddenHere = true;
         animator.SetBool("b_PlayerIsHiddenHere", playerIsHiddenHere);
+        
+        // Audio
+        if(hiddingClip != null)
+        {
+            audioSource.PlayOneShot(hiddingClip);
+        }
     }
 
     private void PlayerExitHideSpot()

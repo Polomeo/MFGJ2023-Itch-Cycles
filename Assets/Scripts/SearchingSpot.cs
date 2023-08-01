@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
+[RequireComponent(typeof(AudioSource))]
 public class SearchingSpot : MonoBehaviour
 {
     public bool playerIsSearchingHere = false;
@@ -12,9 +12,14 @@ public class SearchingSpot : MonoBehaviour
 
     private GameObject player;
 
+    // Audio
+    private AudioSource audioSource;
+    [SerializeField] AudioClip interactionSound;
+
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        audioSource = player.GetComponent<AudioSource>();
     }
 
     public void SearchInSpot() 
@@ -26,6 +31,12 @@ public class SearchingSpot : MonoBehaviour
             {
                 StartCoroutine(Searching(controller));
                 playerIsSearchingHere = true;
+                
+                // Audio
+                if(interactionSound != null)
+                {
+                    audioSource.PlayOneShot(interactionSound);
+                }
             }
 
             if (alreadySearch)

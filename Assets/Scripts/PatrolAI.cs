@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class PatrolAI : MonoBehaviour
 {
     // Waypoints
@@ -33,10 +34,18 @@ public class PatrolAI : MonoBehaviour
     private Rigidbody2D rb;
     private Animator animator;
 
+    // Audio
+    private AudioSource audioSource;
+    [SerializeField] AudioClip caughtLaughSFX;
+    [SerializeField] AudioClip startPatrollingSFX;
+    private bool startPatrollingSFXPlayed = false;
+
     private void Start()
     {
+        // Components
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -45,6 +54,8 @@ public class PatrolAI : MonoBehaviour
         {
             Vector3 player = GameObject.FindWithTag("Player").transform.position;
             rb.isKinematic = true;
+            
+            // Audio
 
             if (transform.position != player)
             {
@@ -90,6 +101,7 @@ public class PatrolAI : MonoBehaviour
     public void PlayerIsSpotted()
     {
         playerSpotted = true;
+        audioSource.PlayOneShot(caughtLaughSFX);
     }
 
     #region PATROL_AI
@@ -102,6 +114,16 @@ public class PatrolAI : MonoBehaviour
         
         else
         {
+            // Audio
+            if (!startPatrollingSFXPlayed)
+            {
+                if(startPatrollingSFX != null)
+                {
+                    audioSource.PlayOneShot(startPatrollingSFX);
+                    startPatrollingSFXPlayed = true;
+                }
+            }
+
             // if Waypoint is on the same floor
             float distanceToWaypoint = Math.Abs(waypoints[currentWaypoint].position.x - transform.position.x);
 
@@ -132,6 +154,7 @@ public class PatrolAI : MonoBehaviour
     private IEnumerator WaitInRoom()
     {
         isWaiting = true;
+        startPatrollingSFXPlayed = false;
 
         // Animation
         animator.SetBool("b_isWaiting", isWaiting);
