@@ -15,11 +15,7 @@ public class BurningSpot : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
 
         // Turn off all dolls
-        foreach(GameObject o in dolls)
-        {
-            o.GetComponent<Renderer>().enabled = false;
-        }
-
+        HideDolls();
         dollPlaced = false;
     }
 
@@ -43,10 +39,19 @@ public class BurningSpot : MonoBehaviour
             }
 
             dollPlaced = true;
+            GameManager.Instance.CheckIfAllDollsArePlaced();
         }
         else
         {
             Debug.Log("This place already has a doll or the player does not have one in hand.");
+        }
+    }
+
+    public void HideDolls()
+    {
+        foreach (GameObject o in dolls)
+        {
+            o.GetComponent<Renderer>().enabled = false;
         }
     }
 }

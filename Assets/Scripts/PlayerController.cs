@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     public bool isClimbing;
     public bool hasBeenFound;
     public bool isHoldingADoll;
+    public bool isHoldingTheKnife;
     [HideInInspector] public string currentRoom;
     
     // Movement
@@ -19,11 +20,12 @@ public class PlayerController : MonoBehaviour
     private float movementSpeed = 3f;
     private Rigidbody2D rb;
 
-    // Dolls
+    // Dolls and knife
     [Header("Dolls")]
     public List<GameObject> dollsInHand;
     public string dollInHandName;
     private int dollHoldingIndex;
+    [SerializeField] GameObject knife;
     
     // Animation
     private Animator animator;
@@ -48,13 +50,18 @@ public class PlayerController : MonoBehaviour
         isClimbing = false;
         hasBeenFound = false;
         isHoldingADoll = false;
+        isHoldingTheKnife = false;
         
-        // Hide de dolls in hand
+        // Hide the dolls in hand
         foreach (GameObject go in dollsInHand)
         {
             go.GetComponent<Renderer>().enabled = false;
         }
-}
+
+        // Hide knife
+        knife.GetComponent<Renderer>().enabled = false;
+
+    }
 
     // Update is called once per frame
     void FixedUpdate()
@@ -93,6 +100,12 @@ public class PlayerController : MonoBehaviour
         {
             dollsInHand[dollHoldingIndex].GetComponent<Renderer>().enabled = false;
         }
+
+        // Hide knife
+        if (isHoldingTheKnife)
+        {
+            knife.GetComponent<Renderer>().enabled = false;
+        }
     }
 
     public void UnHidePlayer()
@@ -104,6 +117,12 @@ public class PlayerController : MonoBehaviour
         if (isHoldingADoll)
         {
             dollsInHand[dollHoldingIndex].GetComponent<Renderer>().enabled = true;
+        }
+
+        // Show knife
+        if (isHoldingTheKnife)
+        {
+            knife.GetComponent<Renderer>().enabled = true;
         }
 
         // As the player exits its cover, we compare if they are in the same room;

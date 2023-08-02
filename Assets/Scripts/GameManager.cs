@@ -14,11 +14,13 @@ public class GameManager : MonoBehaviour
 
     // Gameplay loop conditions
     public bool isGameActive = true;
+    public bool playerIsChasingEnemyPhase = false;
 
     // GameObjects
     public GameObject player;
     public GameObject enemy;
     public List<GameObject> searchSpots;
+    public List<GameObject> burningSpots;
 
     
     // SINGLETON
@@ -40,8 +42,10 @@ public class GameManager : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         enemy = GameObject.FindGameObjectWithTag("Enemy");
 
-        // Store search spots reference
+        // Store references
         searchSpots = new List<GameObject>(GameObject.FindGameObjectsWithTag("SearchSpot"));
+        burningSpots = new List<GameObject>(GameObject.FindGameObjectsWithTag("BurningSpot"));
+
     }
 
     // Update is called once per frame
@@ -94,7 +98,29 @@ public class GameManager : MonoBehaviour
             // On contact --> Game Over
         }
     }
+    public bool CheckIfAllDollsArePlaced()
+    {
+        int totalDollsPlaced = 0;
 
+        for(int i = 0; i < burningSpots.Count; i++)
+        {
+            if (burningSpots[i].GetComponent<BurningSpot>().dollPlaced)
+            {
+                totalDollsPlaced++;
+            }
+        }
+
+        if(totalDollsPlaced == burningSpots.Count)
+        {
+            Debug.Log("All dolls placed in ritual room.");
+            return true;
+        }
+        else
+        {
+            Debug.Log((burningSpots.Count - totalDollsPlaced).ToString() + " dolls left." );
+            return false;
+        }
+    }
 
     public void GameOver()
     {
