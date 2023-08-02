@@ -36,8 +36,11 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        // Store player and enemy reference
         player = GameObject.FindGameObjectWithTag("Player");
         enemy = GameObject.FindGameObjectWithTag("Enemy");
+
+        // Store search spots reference
         searchSpots = new List<GameObject>(GameObject.FindGameObjectsWithTag("SearchSpot"));
     }
 
