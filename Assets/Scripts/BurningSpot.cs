@@ -4,21 +4,49 @@ using UnityEngine;
 
 public class BurningSpot : MonoBehaviour
 {
+    public bool dollPlaced;
+
     private GameObject player;
+    [SerializeField] private List<GameObject> dolls;
 
     private void Start()
     {
+        // Component
         player = GameObject.FindGameObjectWithTag("Player");
+
+        // Turn off all dolls
+        foreach(GameObject o in dolls)
+        {
+            o.GetComponent<Renderer>().enabled = false;
+        }
+
+        dollPlaced = false;
     }
 
-    public void BurnDoll()
+    public void ReciveDoll()
     {
         PlayerController controller = player.GetComponent<PlayerController>();
-        
-        // if Player has a doll in hand
-        if (controller != null && controller.isHoldingADoll)
+        if (controller != null && controller.isHoldingADoll == true)
         {
-            controller.BurningDoll();
+            if (controller != null)
+            {
+                controller.PutDollInPedestal();
+            }
+
+            // Reveal recieved doll
+            for (int i = 0; i < dolls.Count; i++)
+            {
+                if (dolls[i].name == controller.dollInHandName)
+                {
+                    dolls[i].GetComponent<Renderer>().enabled = true;
+                }
+            }
+
+            dollPlaced = true;
+        }
+        else
+        {
+            Debug.Log("This place already has a doll or the player does not have one in hand.");
         }
     }
 }

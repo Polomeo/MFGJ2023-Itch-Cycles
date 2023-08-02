@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
     // Dolls
     [Header("Dolls")]
     public List<GameObject> dollsInHand;
+    public string dollInHandName;
     private int dollHoldingIndex;
     
     // Animation
@@ -138,6 +139,7 @@ public class PlayerController : MonoBehaviour
         
             // Store doll index to remove from the list later
             dollHoldingIndex = randomIndex;
+            dollInHandName = dollsInHand[randomIndex].name;
 
             // Audio: Play "Doll found" sound
             audioSource.PlayOneShot(dollFoundSFX);
@@ -179,7 +181,7 @@ public class PlayerController : MonoBehaviour
     }
     #endregion
 
-    public void BurningDoll()
+    public void PutDollInPedestal()
     {
         // [PLACEHOLDER] Play burning animation
 
@@ -193,7 +195,7 @@ public class PlayerController : MonoBehaviour
         dollHoldingIndex = 0;
         isHoldingADoll = false;
 
-        Debug.Log("Doll burned!");
+        Debug.Log("Doll placed!");
     }
 
     public void PlayerHasBeenFound()
