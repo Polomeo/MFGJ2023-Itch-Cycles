@@ -87,8 +87,8 @@ public class GameManager : MonoBehaviour
         PlayerController playerController = player.GetComponent<PlayerController>();
         PatrolAI enemyController = enemy.GetComponent<PatrolAI>();
 
-        // If they are in the same room, and the player is not hidding
-        if (playerCurrentRoom == enemyCurrentRoom && !playerController.isHiding)
+        // If they are in the same room, and the player is not hidding, and the enemy is not escaping
+        if (playerCurrentRoom == enemyCurrentRoom && !playerController.isHiding && !enemyController.isEscapingFromPlayer)
         { 
             // Freeze player position
             playerController.PlayerHasBeenFound();
