@@ -22,7 +22,7 @@ public class BurningSpot : MonoBehaviour
     public void ReciveDoll()
     {
         PlayerController controller = player.GetComponent<PlayerController>();
-        if (controller != null && controller.isHoldingADoll == true)
+        if (controller != null && controller.isHoldingADoll == true && !dollPlaced)
         {
             if (controller != null)
             {

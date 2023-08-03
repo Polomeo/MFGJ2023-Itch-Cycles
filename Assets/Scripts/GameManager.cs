@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     // Gameplay loop conditions
     public bool isGameActive = true;
     public bool playerIsChasingEnemyPhase = false;
+    public int dollPlaced = 0;
 
     // GameObjects
     public GameObject player;
@@ -102,6 +103,7 @@ public class GameManager : MonoBehaviour
     {
         int totalDollsPlaced = 0;
 
+        // Check for each burning spot for a doll
         for(int i = 0; i < burningSpots.Count; i++)
         {
             if (burningSpots[i].GetComponent<BurningSpot>().dollPlaced)
@@ -110,9 +112,20 @@ public class GameManager : MonoBehaviour
             }
         }
 
+        // Upgrade the total dolls placed (relevant for enemy dificulty)
+        dollPlaced = totalDollsPlaced;
+
+        // Update enemy difficulty
+        enemy.GetComponent<PatrolAI>().SetTotalSpeed(dollPlaced);
+
+        // If all dolls are placed
         if(totalDollsPlaced == burningSpots.Count)
         {
             Debug.Log("All dolls placed in ritual room.");
+
+            // Give the knife to the player
+            player.GetComponent<PlayerController>().GetKnife();
+            
             return true;
         }
         else

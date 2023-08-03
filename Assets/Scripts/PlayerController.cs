@@ -217,6 +217,12 @@ public class PlayerController : MonoBehaviour
         Debug.Log("Doll placed!");
     }
 
+    public void GetKnife()
+    {
+        isHoldingTheKnife = true;
+        knife.GetComponent<Renderer>().enabled = true;
+    }
+
     public void PlayerHasBeenFound()
     {
         // Player has been found by Manny (the enemy)

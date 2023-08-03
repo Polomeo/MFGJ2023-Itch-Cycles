@@ -9,6 +9,7 @@ public class PatrolAI : MonoBehaviour
 {
     // Waypoints
     [SerializeField] private float speed = 2.5f;
+    [SerializeField] private float totalSpeed; // speed + 10% for each doll burned
     [SerializeField] private float waitTime = 1.5f;
     [SerializeField] private Transform[] waypoints;
     [SerializeField] private float minWaypointDistance = 0.5f;
@@ -47,6 +48,9 @@ public class PatrolAI : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
+
+        // Initial values
+        totalSpeed = speed;
     }
 
     void Update()
@@ -105,6 +109,13 @@ public class PatrolAI : MonoBehaviour
         audioSource.PlayOneShot(caughtLaughSFX);
     }
 
+    public void SetTotalSpeed(int dollPlaced)
+    {
+        // 50% extra for each doll placed
+        totalSpeed = speed + (speed * dollPlaced / 2f);
+        Debug.Log("Enemy speed increased by " +  (50 * dollPlaced).ToString() + "% !");
+    }
+
     #region PATROL_AI
     private void Patrol()
     {
@@ -132,7 +143,7 @@ public class PatrolAI : MonoBehaviour
             if (distanceToWaypoint > minWaypointDistance)
             {
                 transform.position = Vector2.MoveTowards(transform.position,
-                    waypoints[nextWaypoint].position, speed * Time.deltaTime);
+                    waypoints[nextWaypoint].position, totalSpeed * Time.deltaTime);
 
                 // Animation - Look at Waypoint
                 if (waypoints[nextWaypoint].position.x < transform.position.x)
@@ -182,8 +193,8 @@ public class PatrolAI : MonoBehaviour
         // Save current waypoint (was the last "next waypoint")
         currentWaypoint = nextWaypoint;
 
-        // 5 side dice roll
-        int dice = UnityEngine.Random.Range(0, 4);
+        // 6 side dice roll
+        int dice = UnityEngine.Random.Range(0, 5);
         Debug.Log("Dice = " + dice.ToString());
         
         // 20% chance to go back
@@ -264,7 +275,7 @@ public class PatrolAI : MonoBehaviour
     {
         // Move towards the closest ladder point X axis position
         transform.position = Vector2.MoveTowards(transform.position,
-                new Vector2(closerLadderSpot.transform.position.x, transform.position.y), speed * Time.deltaTime);
+                new Vector2(closerLadderSpot.transform.position.x, transform.position.y), totalSpeed * Time.deltaTime);
 
         // When the ladder is reached
         if(transform.position.x == closerLadderSpot.transform.position.x)
@@ -277,7 +288,7 @@ public class PatrolAI : MonoBehaviour
         {
             // Move towards Y axis position of the second closed ladder (the other end of the current ladder)
             transform.position = Vector2.MoveTowards(transform.position,
-                new Vector2(closerLadderSpot.transform.position.x, secondCloserLadderSpot.transform.position.y), speed * Time.deltaTime);
+                new Vector2(closerLadderSpot.transform.position.x, secondCloserLadderSpot.transform.position.y), totalSpeed * Time.deltaTime);
 
             // if reached the end of the ladder
             if(transform.position.y == secondCloserLadderSpot.transform.position.y)
