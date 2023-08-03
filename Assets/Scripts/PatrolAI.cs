@@ -197,7 +197,7 @@ public class PatrolAI : MonoBehaviour
         int dice = UnityEngine.Random.Range(0, 5);
         Debug.Log("Dice = " + dice.ToString());
         
-        // 20% chance to go back
+        // 1/6 chance to go to previous waypoint
         if (dice == 0)
         {
             nextWaypoint--;
@@ -209,7 +209,7 @@ public class PatrolAI : MonoBehaviour
                 nextWaypoint = 1;
             }
         }
-        // 80% go forward
+        // 5/6 chances to go to the next waypoint
         else
         {
             nextWaypoint++;
