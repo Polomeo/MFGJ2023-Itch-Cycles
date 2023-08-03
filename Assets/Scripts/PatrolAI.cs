@@ -13,6 +13,7 @@ public class PatrolAI : MonoBehaviour
     [SerializeField] private Transform[] waypoints;
     [SerializeField] private float minWaypointDistance = 0.5f;
     [SerializeField] private int currentWaypoint;
+    [SerializeField] private int nextWaypoint;
     [SerializeField] private float chaseSpeed = 5f;
     [SerializeField] private float jumpAttackDistance = 3f;
 
@@ -125,20 +126,20 @@ public class PatrolAI : MonoBehaviour
             }
 
             // if Waypoint is on the same floor
-            float distanceToWaypoint = Math.Abs(waypoints[currentWaypoint].position.x - transform.position.x);
+            float distanceToWaypoint = Math.Abs(waypoints[nextWaypoint].position.x - transform.position.x);
 
             // If not in current waypoint X position, go to it
             if (distanceToWaypoint > minWaypointDistance)
             {
                 transform.position = Vector2.MoveTowards(transform.position,
-                    waypoints[currentWaypoint].position, speed * Time.deltaTime);
+                    waypoints[nextWaypoint].position, speed * Time.deltaTime);
 
                 // Animation - Look at Waypoint
-                if (waypoints[currentWaypoint].position.x < transform.position.x)
+                if (waypoints[nextWaypoint].position.x < transform.position.x)
                 {
                     transform.localScale = new Vector3(-1.0f, 1.0f, 1.0f);
                 }
-                else if (waypoints[currentWaypoint].position.x > transform.position.x)
+                else if (waypoints[nextWaypoint].position.x > transform.position.x)
                 {
                     transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
                 }
@@ -163,17 +164,8 @@ public class PatrolAI : MonoBehaviour
         yield return new WaitForSeconds(waitTime);
         
         // Set the next waypoint
-        currentWaypoint++;
-        
-        // Reset to the first waypoint
-        if (currentWaypoint == waypoints.Length)
-        {
-            // Reverse the array of waypoints
-            System.Array.Reverse(waypoints);
-            
-            // Set the waypoint to the first of the array
-            currentWaypoint = 0;
-        }
+        //currentWaypoint++;
+        ChooseNextWaypoint();
 
         isWaiting = false;
         animator.SetBool("b_isWaiting", isWaiting);
@@ -185,10 +177,48 @@ public class PatrolAI : MonoBehaviour
         // [TO IMPLEMENT] Start wandering sound
     }
 
+    private void ChooseNextWaypoint()
+    {
+        // Save current waypoint (was the last "next waypoint")
+        currentWaypoint = nextWaypoint;
+
+        // 5 side dice roll
+        int dice = UnityEngine.Random.Range(0, 4);
+        Debug.Log("Dice = " + dice.ToString());
+        
+        // 20% chance to go back
+        if (dice == 0)
+        {
+            nextWaypoint--;
+
+            // If the waypoint index ends up beeing less than 0
+            if(nextWaypoint < 0)
+            {
+                // Go to waypoint 1
+                nextWaypoint = 1;
+            }
+        }
+        // 80% go forward
+        else
+        {
+            nextWaypoint++;
+
+            // Reset to the first waypoint if last waypoint reached
+            if (nextWaypoint == waypoints.Length)
+            {
+                // Reverse the array of waypoints
+                System.Array.Reverse(waypoints);
+
+                // Set the waypoint to the first of the array
+                nextWaypoint = 0;
+            }
+        }
+    }
+
     private void IsLadderNeeded()
     {
         // If the last waypoint has a different tag than the next, it means they are in different floors
-        if(currentWaypoint != 0 && waypoints[currentWaypoint - 1].gameObject.tag != waypoints[currentWaypoint].gameObject.tag)
+        if(nextWaypoint != 0 && waypoints[currentWaypoint].gameObject.tag != waypoints[nextWaypoint].gameObject.tag)
         {
             Debug.Log("Climbing needed");
             
