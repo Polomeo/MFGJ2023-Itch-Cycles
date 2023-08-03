@@ -123,8 +123,7 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("All dolls placed in ritual room.");
 
-            // Give the knife to the player
-            player.GetComponent<PlayerController>().GetKnife();
+            StartRitual();
             
             return true;
         }
@@ -133,6 +132,15 @@ public class GameManager : MonoBehaviour
             Debug.Log((burningSpots.Count - totalDollsPlaced).ToString() + " dolls left." );
             return false;
         }
+    }
+
+    public void StartRitual()
+    {
+        // Give the knife to the player
+        player.GetComponent<PlayerController>().GetKnife();
+
+        // Scare the clown
+        enemy.GetComponent<PatrolAI>().EscapeFromPlayer();
     }
 
     public void GameOver()

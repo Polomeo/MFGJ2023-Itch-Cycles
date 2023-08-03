@@ -31,6 +31,7 @@ public class PatrolAI : MonoBehaviour
     private bool isClimbing;
     private bool playerSpotted;
     private bool isAttacking;
+    private bool isEscapingFromPlayer;
 
     // Components
     private Rigidbody2D rb;
@@ -55,7 +56,7 @@ public class PatrolAI : MonoBehaviour
 
     void Update()
     {
-        if(playerSpotted && GameManager.Instance.isGameActive)
+        if(playerSpotted)
         {
             Vector3 player = GameObject.FindWithTag("Player").transform.position;
             rb.isKinematic = true;
@@ -88,7 +89,7 @@ public class PatrolAI : MonoBehaviour
             }
 
         }
-        else if (GameManager.Instance.isGameActive)
+        else 
         {
             Patrol();
         }
@@ -306,7 +307,11 @@ public class PatrolAI : MonoBehaviour
     }
     #endregion
 
-
+    public void EscapeFromPlayer()
+    {
+        isEscapingFromPlayer = true;
+        animator.SetBool("b_isScared", isEscapingFromPlayer);
+    }
 
 
 
