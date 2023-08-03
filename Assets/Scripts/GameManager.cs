@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
 
     // Gameplay loop conditions
     public bool isGameActive = true;
+    public bool playerLoseScenario = false;
+    public bool playerWinScenario = false;
     public bool playerIsChasingEnemyPhase = false;
     public int dollPlaced = 0;
 
@@ -58,14 +60,26 @@ public class GameManager : MonoBehaviour
             ExitGame();
         }
 
-        // Restart Game
-        if(!isGameActive)
+        // Game Over
+        if(!isGameActive && playerLoseScenario)
         {
+            // Restart Game
             if(Input.GetKeyDown(KeyCode.Space))
             {
                 RestartGame();
             }
         }
+
+        if (!isGameActive && playerWinScenario)
+        {
+            // Restart Game
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                RestartGame();
+            }
+        }
+
+
     }
 
     public void SetPlayerRoom(string room)
@@ -146,8 +160,18 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         isGameActive = false;
+        playerLoseScenario = true;
         UIManager.Instance.ShowGameOverCanvas();
     }
+
+    public void GameWin()
+    {
+        isGameActive = false;
+        playerWinScenario = true;
+        UIManager.Instance.ShowGameWinCanvas();
+
+    }
+
     public void RestartGame()
     {
         SceneManager.LoadScene("Main");

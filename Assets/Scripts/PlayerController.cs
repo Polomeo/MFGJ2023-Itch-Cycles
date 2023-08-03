@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour
     public string dollInHandName;
     private int dollHoldingIndex;
     [SerializeField] GameObject knife;
+    private float attackTime = 0.1f;
     
     // Animation
     private Animator animator;
@@ -63,22 +64,46 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    private void Update()
+    {
+        // If is holding the knife
+        if(isHoldingTheKnife)
+        {
+            // Attack
+            if(Input.GetKeyDown(KeyCode.Space))
+            {
+                StartCoroutine(AttackWithKnife());
+
+                KnifeController knifeController = knife.GetComponent<KnifeController>();
+
+                if (knifeController.enemyInRangeOfAttack)
+                {
+                    GameManager.Instance.GameWin();
+                }
+            }
+        }
+    }
+
     // Update is called once per frame
     void FixedUpdate()
     {
         if (!isHiding && !isSearching && !isClimbing && !hasBeenFound)
         {
-            MoveCharacter();
+            MoveCharacter();          
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        // Send room information to GameManager
         if (collision.gameObject.CompareTag("Room"))
         {
             currentRoom = collision.gameObject.name;
             GameManager.Instance.SetPlayerRoom(currentRoom);
         }
+
+        // Attack calculation
+
     }
 
     #region PLAYER_HIDDING
@@ -202,8 +227,6 @@ public class PlayerController : MonoBehaviour
 
     public void PutDollInPedestal()
     {
-        // [PLACEHOLDER] Play burning animation
-
         // Deactivate dolls renderer
         dollsInHand[dollHoldingIndex].GetComponent<Renderer>().enabled = false;
         
@@ -252,6 +275,22 @@ public class PlayerController : MonoBehaviour
         else if (movement.x > 0.0f) { transform.localScale = new Vector3(1.0f, 1.0f, 1.0f); }
 
         animator.SetBool("b_isWalking", movement.x != 0f);
+    }
+
+    private IEnumerator AttackWithKnife()
+    {
+        Vector3 startLocalPosition = knife.transform.localPosition;
+        
+        // Rotate to attack
+        knife.transform.localPosition = new Vector3(0.98f, 0.3f, knife.transform.position.z);
+        knife.transform.Rotate(0f, 0f, -28f);
+        
+        // Wait
+        yield return new WaitForSeconds(attackTime);
+
+        // Back to original position
+        knife.transform.localPosition = startLocalPosition;
+        knife.transform.Rotate(0f, 0f, 28f);
     }
 
 }
