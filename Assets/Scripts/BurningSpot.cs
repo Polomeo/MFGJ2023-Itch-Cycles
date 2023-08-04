@@ -5,6 +5,7 @@ using UnityEngine;
 public class BurningSpot : MonoBehaviour
 {
     public bool dollPlaced;
+    [SerializeField] private Animator animator;
 
     private GameObject player;
     [SerializeField] private List<GameObject> dolls;
@@ -13,6 +14,7 @@ public class BurningSpot : MonoBehaviour
     {
         // Component
         player = GameObject.FindGameObjectWithTag("Player");
+        animator = GetComponent<Animator>();
 
         // Turn off all dolls
         HideDolls();
@@ -53,5 +55,11 @@ public class BurningSpot : MonoBehaviour
         {
             o.GetComponent<Renderer>().enabled = false;
         }
+    }
+
+    public void BurnDoll()
+    {
+        HideDolls();
+        animator.SetTrigger("t_BurnDoll");
     }
 }

@@ -134,7 +134,8 @@ MonoBehaviour:
   alreadySearch: 0
   searchTime: 3
   alreadySearchSprite: {fileID: 1228556001, guid: 5920729c5507c894aa0d1936979c4302, type: 3}
-  interactionSound: {fileID: 0}
+  thisSpotHasADoll: 0
+  interactionSound: {fileID: 8300000, guid: 5b4e4f0c138640647afa00afc121a6a6, type: 3}
 --- !u!61 &5227804489933251835
 BoxCollider2D:
   m_ObjectHideFlags: 0

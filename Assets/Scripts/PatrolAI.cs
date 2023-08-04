@@ -194,8 +194,8 @@ public class PatrolAI : MonoBehaviour
         // Save current waypoint (was the last "next waypoint")
         currentWaypoint = nextWaypoint;
 
-        // 6 side dice roll
-        int dice = UnityEngine.Random.Range(0, 5);
+        // 10 side dice roll
+        int dice = UnityEngine.Random.Range(0, 9);
         Debug.Log("Dice = " + dice.ToString());
         
         // 1/6 chance to go to previous waypoint
@@ -210,7 +210,7 @@ public class PatrolAI : MonoBehaviour
                 nextWaypoint = 1;
             }
         }
-        // 5/6 chances to go to the next waypoint
+        // 8/9 chances to go to the next waypoint
         else
         {
             nextWaypoint++;

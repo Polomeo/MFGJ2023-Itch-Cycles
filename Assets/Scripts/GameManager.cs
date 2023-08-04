@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
     public GameObject player;
     public GameObject enemy;
     public List<GameObject> searchSpots;
+    public List<GameObject> hideSpots;
     public List<GameObject> burningSpots;
 
     
@@ -48,6 +49,7 @@ public class GameManager : MonoBehaviour
         // Store references
         searchSpots = new List<GameObject>(GameObject.FindGameObjectsWithTag("SearchSpot"));
         burningSpots = new List<GameObject>(GameObject.FindGameObjectsWithTag("BurningSpot"));
+        hideSpots = new List<GameObject>(GameObject.FindGameObjectsWithTag("HideSpot"));
 
     }
 
@@ -73,7 +75,7 @@ public class GameManager : MonoBehaviour
         if (!isGameActive && playerWinScenario)
         {
             // Restart Game
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetKeyDown(KeyCode.Space))
             {
                 RestartGame();
             }
@@ -150,11 +152,44 @@ public class GameManager : MonoBehaviour
 
     public void StartRitual()
     {
+        // Burn dolls
+        foreach (GameObject go in  burningSpots)
+        {
+            go.GetComponent<BurningSpot>().BurnDoll();
+        }
+
         // Give the knife to the player
         player.GetComponent<PlayerController>().GetKnife();
 
         // Scare the clown
         enemy.GetComponent<PatrolAI>().EscapeFromPlayer();
+
+        // Remove interaction for hidding, searching and burning
+        RemoveInteraction();
+   
+    }
+
+    private void RemoveInteraction()
+    {
+        // Removes the interaction with objects (other than ladders)
+
+        // Search spots
+        foreach(GameObject spot in searchSpots)
+        {
+            spot.GetComponent<BoxCollider2D>().enabled = false;
+        }
+
+        // Hide spots
+        foreach (GameObject spot in hideSpots)
+        {
+            spot.GetComponent<BoxCollider2D>().enabled = false;
+        }
+
+        // Burning spots
+        foreach (GameObject spot in burningSpots)
+        {
+            spot.GetComponent<BoxCollider2D>().enabled = false;
+        }
     }
 
     public void GameOver()

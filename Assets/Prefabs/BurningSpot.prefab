@@ -265,6 +265,7 @@ GameObject:
   - component: {fileID: 805310778623508302}
   - component: {fileID: 805310778623508289}
   - component: {fileID: 805310778623508288}
+  - component: {fileID: 3133720626258284841}
   m_Layer: 0
   m_Name: BurningSpot
   m_TagString: BurningSpot
@@ -411,7 +412,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dollPlaced: 0
+  animator: {fileID: 0}
   dolls:
   - {fileID: 805310778573477284}
   - {fileID: 805310776831923211}
   - {fileID: 805310777549607976}
+--- !u!95 &3133720626258284841
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 805310778623508293}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 03012707c6e8bbc459742c3fcc59b738, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

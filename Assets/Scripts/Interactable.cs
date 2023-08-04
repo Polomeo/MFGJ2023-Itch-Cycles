@@ -26,9 +26,9 @@ public class Interactable : MonoBehaviour
         if(collision.gameObject.CompareTag("Player"))
         {
             isInRange = true;
-            
+
             // UI
-            UIManager.Instance.DisplayInteractionText(interactText);
+            UIManager.Instance.DisplayInteractionText(interactText);          
         }
     }
 

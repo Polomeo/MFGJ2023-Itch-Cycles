@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     public bool hasBeenFound;
     public bool isHoldingADoll;
     public bool isHoldingTheKnife;
+    public bool collidingWithLadder;
     [HideInInspector] public string currentRoom;
     
     // Movement
@@ -70,7 +71,7 @@ public class PlayerController : MonoBehaviour
         if(isHoldingTheKnife)
         {
             // Attack
-            if(Input.GetKeyDown(KeyCode.Space))
+            if(Input.GetKeyDown(KeyCode.E) && !collidingWithLadder)
             {
                 StartCoroutine(AttackWithKnife());
 
@@ -102,8 +103,20 @@ public class PlayerController : MonoBehaviour
             GameManager.Instance.SetPlayerRoom(currentRoom);
         }
 
-        // Attack calculation
+        // Attack with E
+        if (collision.gameObject.CompareTag("Ladder"))
+        {
+            collidingWithLadder = true;
+        }
 
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Ladder"))
+        {
+            collidingWithLadder = false;
+        }
     }
 
     #region PLAYER_HIDDING

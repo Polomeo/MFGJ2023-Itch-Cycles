@@ -1240,7 +1240,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &573039976
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1512,7 +1512,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 9.757975, y: 0.36211276}
+  m_Offset: {x: 9.879735, y: 0.36211276}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -1523,7 +1523,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 9.004604, y: 4.6973605}
+  m_Size: {x: 8.761084, y: 4.6973605}
   m_EdgeRadius: 0
 --- !u!1 &641702742
 GameObject:
@@ -2170,7 +2170,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 807497510}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.202575, y: 4.8786597, z: -10}
+  m_LocalPosition: {x: -8.201364, y: 4.87681, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4198,6 +4198,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BurningSpot (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3133720626258284841, guid: f10d90f04addd8c4ab5df976b3214efd, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 22100000, guid: df2d947df61e16041b539195364b5c93, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f10d90f04addd8c4ab5df976b3214efd, type: 3}
 --- !u!1 &1954087334
@@ -4558,7 +4562,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Press E to play again
+  m_text: Press SPACE to play again
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a60477febd0335647936ea045ddd5424, type: 2}
   m_sharedMaterial: {fileID: 1412497819980131726, guid: a60477febd0335647936ea045ddd5424, type: 2}
@@ -4680,7 +4684,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -10.729974, y: 0.36211276}
+  m_Offset: {x: -11.764938, y: 0.36211276}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -4691,7 +4695,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 6.9081593, y: 4.6973605}
+  m_Size: {x: 4.838229, y: 4.6973605}
   m_EdgeRadius: 0
 --- !u!1 &2072387919
 GameObject:
@@ -4858,7 +4862,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -1.0482264, y: 0.36211276}
+  m_Offset: {x: -1.8802569, y: 0.36211276}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -4869,7 +4873,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 10.491165, y: 4.6973605}
+  m_Size: {x: 12.155226, y: 4.6973605}
   m_EdgeRadius: 0
 --- !u!1 &2116543674
 GameObject:
@@ -4908,6 +4912,7 @@ MonoBehaviour:
   player: {fileID: 0}
   enemy: {fileID: 0}
   searchSpots: []
+  hideSpots: []
   burningSpots: []
 --- !u!4 &2116543676
 Transform:
