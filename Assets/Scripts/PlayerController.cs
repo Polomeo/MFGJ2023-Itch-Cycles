@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
     
     // Movement
     private Vector2 movement;
-    private float movementSpeed = 3f;
+    private float movementSpeed = 3.5f;
     private Rigidbody2D rb;
 
     // Dolls and knife

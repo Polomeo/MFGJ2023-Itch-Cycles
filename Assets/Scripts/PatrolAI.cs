@@ -60,7 +60,7 @@ public class PatrolAI : MonoBehaviour
 
     void Update()
     {
-        if(playerSpotted && !isEscapingFromPlayer)
+        if(playerSpotted && !isEscapingFromPlayer && GameManager.Instance.isGameActive)
         {
             Vector3 player = GameObject.FindWithTag("Player").transform.position;
             rb.isKinematic = true;
@@ -93,7 +93,7 @@ public class PatrolAI : MonoBehaviour
             }
 
         }
-        else
+        else if (GameManager.Instance.isGameActive)
         {
             Patrol();
         }

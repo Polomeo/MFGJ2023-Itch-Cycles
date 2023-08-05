@@ -399,6 +399,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 805310778623508288}
+        m_TargetAssemblyTypeName: BurningSpot, Assembly-CSharp
+        m_MethodName: GiveKnifeToPlayer
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &805310778623508288
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -412,11 +424,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dollPlaced: 0
-  animator: {fileID: 0}
   dolls:
   - {fileID: 805310778573477284}
   - {fileID: 805310776831923211}
   - {fileID: 805310777549607976}
+  animator: {fileID: 0}
+  idleSprite: {fileID: -1780171233, guid: 0e7f968e3994b5f40bad22dd0a932e46, type: 3}
 --- !u!95 &3133720626258284841
 Animator:
   serializedVersion: 4

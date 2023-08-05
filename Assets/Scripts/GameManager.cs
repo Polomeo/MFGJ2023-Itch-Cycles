@@ -33,6 +33,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private AudioClip burnDollSFX;
     [SerializeField] private AudioClip backgroundSong;
     [SerializeField] private AudioClip urgentSong;
+    [SerializeField] private AudioClip winSound;
+    [SerializeField] private AudioClip gameOverSound;
 
     private AudioSource audioSource;
     private AudioSource mainCamSound;
@@ -67,7 +69,7 @@ public class GameManager : MonoBehaviour
         hideSpots = new List<GameObject>(GameObject.FindGameObjectsWithTag("HideSpot"));
 
         // Starting setup
-        RandomPlaceDolls();
+        // RandomPlaceDolls();
 
     }
 
@@ -202,13 +204,13 @@ public class GameManager : MonoBehaviour
         mainCamSound.Stop();
 
         // Burn dolls
-        foreach (GameObject go in  burningSpots)
+        foreach (GameObject go in burningSpots)
         {
             go.GetComponent<BurningSpot>().BurnDoll();
         }
 
-        // Give the knife to the player
-        player.GetComponent<PlayerController>().GetKnife();
+        // Give the knife to the player (DONE IN BURNING SPOT)
+        // player.GetComponent<PlayerController>().GetKnife();
 
         // Scare the clown
         enemy.GetComponent<PatrolAI>().EscapeFromPlayer();
@@ -220,12 +222,12 @@ public class GameManager : MonoBehaviour
         mainCamSound.clip = urgentSong;
         mainCamSound.Play();
 
-        // Remove interaction for hidding, searching and burning
-        RemoveInteraction();
+        // Remove interaction for hidding, searching and burning (DONE IN BURNING SPOT)
+        // RemoveInteraction();
    
     }
 
-    private void RemoveInteraction()
+    public void RemoveInteraction()
     {
         // Removes the interaction with objects (other than ladders)
 
@@ -253,6 +255,11 @@ public class GameManager : MonoBehaviour
         isGameActive = false;
         playerLoseScenario = true;
         UIManager.Instance.ShowGameOverCanvas();
+
+        // Audio
+        mainCamSound.Stop();
+        mainCamSound.clip = gameOverSound; 
+        mainCamSound.PlayOneShot(gameOverSound);
     }
 
     public void GameWin()
@@ -260,6 +267,11 @@ public class GameManager : MonoBehaviour
         isGameActive = false;
         playerWinScenario = true;
         UIManager.Instance.ShowGameWinCanvas();
+
+        // Audio
+        mainCamSound.Stop();
+        mainCamSound.clip = winSound;
+        mainCamSound.PlayOneShot(winSound);
 
     }
 

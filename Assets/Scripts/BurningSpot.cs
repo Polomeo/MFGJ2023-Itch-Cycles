@@ -10,9 +10,12 @@ public class BurningSpot : MonoBehaviour
     private Interactable interactable;
     [SerializeField] private List<GameObject> dolls;
     [SerializeField] private Animator animator;
+    [SerializeField] private Sprite idleSprite;
 
-    private string burnDollText = "Press E to Put Doll";
-    private string pickKnifeText = "Press E to Take Knife";
+    private string burnDollText = "Press E to Place Doll";
+    private string pickKnifeText = "Press E to Take Knife and Attack";
+
+    private bool dollsBurn;
 
     private void Start()
     {
@@ -69,9 +72,32 @@ public class BurningSpot : MonoBehaviour
     public void BurnDoll()
     {
         HideDolls();
-        animator.SetTrigger("t_BurnDoll");
+        StartCoroutine(playBurningAnimation());
+    }
 
+    IEnumerator playBurningAnimation()
+    {
+        animator.SetTrigger("t_BurnDoll");
+        float animationLength = animator.GetCurrentAnimatorStateInfo(0).length;
+        yield return new WaitForSecondsRealtime(animationLength);
+        
         // Set Pick up knife Text
         interactable.SetInteractText(pickKnifeText);
+        dollsBurn = true;
+    }
+
+    public void GiveKnifeToPlayer()
+    {
+        if(dollsBurn)
+        {
+            // Give the knife to the player
+            player.GetComponent<PlayerController>().GetKnife();
+
+            // Disable renderer
+            gameObject.GetComponent<SpriteRenderer>().enabled = false;
+
+            // Deactivate the interaction
+            GameManager.Instance.RemoveInteraction();
+        }
     }
 }
