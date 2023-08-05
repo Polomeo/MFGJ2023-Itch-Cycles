@@ -51,6 +51,9 @@ public class GameManager : MonoBehaviour
         burningSpots = new List<GameObject>(GameObject.FindGameObjectsWithTag("BurningSpot"));
         hideSpots = new List<GameObject>(GameObject.FindGameObjectsWithTag("HideSpot"));
 
+        // Starting setup
+        RandomPlaceDolls();
+
     }
 
     // Update is called once per frame
@@ -82,6 +85,34 @@ public class GameManager : MonoBehaviour
         }
 
 
+    }
+
+    private void RandomPlaceDolls()
+    {
+        // Remove all dolls
+        foreach(GameObject spot in searchSpots)
+        {
+            spot.GetComponent<SearchingSpot>().thisSpotHasADoll = false;
+        }
+
+        // There are 3 dolls in the game, to be put in random searching spots
+        for (int i = 0; i < 3; i++) 
+        { 
+            // Select a Random Search Spot index
+            int randomSearchSpot = Random.Range(0, searchSpots.Count);
+
+            // Put a doll in it
+            searchSpots[randomSearchSpot].GetComponent<SearchingSpot>().PutDollIn();
+
+            // Remove from list (so it does not repeat)
+            searchSpots.RemoveAt(randomSearchSpot);
+        }
+
+        // Clear the list
+        searchSpots.Clear();
+
+        // Repopulate the list with all spots
+        searchSpots = new List<GameObject>(GameObject.FindGameObjectsWithTag("SearchSpot"));
     }
 
     public void SetPlayerRoom(string room)

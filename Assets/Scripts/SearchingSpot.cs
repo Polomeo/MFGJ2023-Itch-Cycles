@@ -8,9 +8,9 @@ public class SearchingSpot : MonoBehaviour
     // Search logic
     public bool playerIsSearchingHere = false;
     public bool alreadySearch = false;
+    public bool thisSpotHasADoll;
     [SerializeField] float searchTime = 3f;
     [SerializeField] Sprite alreadySearchSprite;
-    [SerializeField] bool thisSpotHasADoll;
 
     private GameObject player;
 
@@ -22,6 +22,11 @@ public class SearchingSpot : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
         audioSource = player.GetComponent<AudioSource>();
+    }
+
+    public void PutDollIn()
+    {
+        thisSpotHasADoll = true;
     }
 
     public void SearchInSpot() 
