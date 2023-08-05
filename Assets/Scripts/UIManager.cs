@@ -61,5 +61,6 @@ public class UIManager : MonoBehaviour
     public void ShowGameWinCanvas()
     {
         gameWinCanvas.SetActive(true);
+        gameWinCanvas.GetComponentInChildren<UISpriteAnimator>().PlayUIAnim();
     }
 }
