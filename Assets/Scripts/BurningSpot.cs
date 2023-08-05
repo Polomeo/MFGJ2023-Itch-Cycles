@@ -5,20 +5,29 @@ using UnityEngine;
 public class BurningSpot : MonoBehaviour
 {
     public bool dollPlaced;
-    [SerializeField] private Animator animator;
 
     private GameObject player;
+    private Interactable interactable;
     [SerializeField] private List<GameObject> dolls;
+    [SerializeField] private Animator animator;
+
+    private string burnDollText = "Press E to Put Doll";
+    private string pickKnifeText = "Press E to Take Knife";
 
     private void Start()
     {
         // Component
         player = GameObject.FindGameObjectWithTag("Player");
         animator = GetComponent<Animator>();
+        interactable = GetComponent<Interactable>();
 
         // Turn off all dolls
         HideDolls();
         dollPlaced = false;
+
+        // Set starting text
+        interactable.SetInteractText(burnDollText);
+
     }
 
     public void ReciveDoll()
@@ -61,5 +70,8 @@ public class BurningSpot : MonoBehaviour
     {
         HideDolls();
         animator.SetTrigger("t_BurnDoll");
+
+        // Set Pick up knife Text
+        interactable.SetInteractText(pickKnifeText);
     }
 }

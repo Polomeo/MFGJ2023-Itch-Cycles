@@ -30,8 +30,12 @@ public class GameManager : MonoBehaviour
 
     // Audio
     [Header("Audio")]
-    public AudioClip burnDollSFX;
+    [SerializeField] private AudioClip burnDollSFX;
+    [SerializeField] private AudioClip backgroundSong;
+    [SerializeField] private AudioClip urgentSong;
+
     private AudioSource audioSource;
+    private AudioSource mainCamSound;
 
     
     // SINGLETON
@@ -55,6 +59,7 @@ public class GameManager : MonoBehaviour
 
         // Components
         audioSource = GetComponent<AudioSource>();
+        mainCamSound = Camera.main.GetComponent<AudioSource>();
 
         // Store references
         searchSpots = new List<GameObject>(GameObject.FindGameObjectsWithTag("SearchSpot"));
@@ -193,6 +198,9 @@ public class GameManager : MonoBehaviour
 
     public void StartRitual()
     {
+        // AUDIO - Stop the song
+        mainCamSound.Stop();
+
         // Burn dolls
         foreach (GameObject go in  burningSpots)
         {
@@ -207,6 +215,10 @@ public class GameManager : MonoBehaviour
 
         // Play ritual sound
         audioSource.PlayOneShot(burnDollSFX);
+
+        // AUDIO - Play the Urgent Song
+        mainCamSound.clip = urgentSong;
+        mainCamSound.Play();
 
         // Remove interaction for hidding, searching and burning
         RemoveInteraction();

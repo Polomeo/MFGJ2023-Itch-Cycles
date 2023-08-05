@@ -4916,6 +4916,8 @@ MonoBehaviour:
   hideSpots: []
   burningSpots: []
   burnDollSFX: {fileID: 8300000, guid: aa8ec6502dff3214ba14681719863b1c, type: 3}
+  backgroundSong: {fileID: 8300000, guid: 9db920fd97e025549b77c10fa8efc074, type: 3}
+  urgentSong: {fileID: 8300000, guid: 90822fa10ea2a374da0c2e9446b2358d, type: 3}
 --- !u!4 &2116543676
 Transform:
   m_ObjectHideFlags: 0

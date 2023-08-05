@@ -10,6 +10,9 @@ public class HidingSpot : MonoBehaviour
 
     private GameObject player;
     private Animator animator;
+    private Interactable interactable;
+
+    private string pressEtoHideText = "Press E to Hide";
 
     // Audio
     private AudioSource audioSource;
@@ -20,6 +23,12 @@ public class HidingSpot : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         animator = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
+        interactable = GetComponent<Interactable>();
+
+        // Starting message
+        interactable.SetInteractText(pressEtoHideText);
+
+        
     }
 
     public void ToggleHidding()

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -17,6 +18,12 @@ public class Interactable : MonoBehaviour
     public UnityEvent interactAction;
 
     private PlayerController playerController;
+
+    // References to comunicate with component variables
+    private BurningSpot burningSpot;
+    private SearchingSpot searchingSpot;
+    private HidingSpot hidingSpot;
+
 
     // When enters the trigger, sets "isInRange" to True
     private void OnTriggerEnter2D(Collider2D collision)
@@ -47,6 +54,12 @@ public class Interactable : MonoBehaviour
     private void Start()
     {
         playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+    }
+
+    public void SetInteractText(string text)
+    {
+        // Called from the script
+        interactText = text;
     }
 
     private void Update()
