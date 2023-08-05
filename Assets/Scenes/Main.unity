@@ -3973,14 +3973,13 @@ GameObject:
   - component: {fileID: 1711149556}
   - component: {fileID: 1711149555}
   - component: {fileID: 1711149554}
-  - component: {fileID: 1711149558}
   m_Layer: 5
   m_Name: WinGameCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1711149554
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4067,22 +4066,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!111 &1711149558
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1711149553}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: 4160dd73857bd084a81a92479fed8d9a, type: 2}
-  m_Animations:
-  - {fileID: 7400000, guid: 4160dd73857bd084a81a92479fed8d9a, type: 2}
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
 --- !u!1 &1736889977
 GameObject:
   m_ObjectHideFlags: 0
