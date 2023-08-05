@@ -102,6 +102,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2.5
+  totalSpeed: 0
   waitTime: 3
   waypoints:
   - {fileID: 0}
@@ -114,6 +115,7 @@ MonoBehaviour:
   - {fileID: 0}
   minWaypointDistance: 0.5
   currentWaypoint: 0
+  nextWaypoint: 0
   chaseSpeed: 5
   jumpAttackDistance: 3
   ladderSpots:
@@ -125,8 +127,16 @@ MonoBehaviour:
   secondCloserLadderSpot: {fileID: 0}
   distance: 0
   nearestDistance: 10000
+  isWaiting: 0
+  needClimbing: 0
+  isClimbing: 0
+  playerSpotted: 0
+  isAttacking: 0
+  isEscapingFromPlayer: 0
   caughtLaughSFX: {fileID: 8300000, guid: 7a718a8d9800cd74387862ed5facae31, type: 3}
   startPatrollingSFX: {fileID: 8300000, guid: bf4519f2130a2364582bef2c46b4eb7d, type: 3}
+  updatePatrolSFX_1: {fileID: 8300000, guid: 41432c411c37e0940b8bbb0bc7013b7e, type: 3}
+  updatePatrolSFX_2: {fileID: 8300000, guid: 88a24767f38ef9f47b3b95799fdd0b05, type: 3}
 --- !u!61 &7050052995680108281
 BoxCollider2D:
   m_ObjectHideFlags: 0

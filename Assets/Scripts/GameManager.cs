@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public string enemyCurrentRoom { get; private set; }
 
     // Gameplay loop conditions
+    [Header("Game Loop Conditions")]
     public bool isGameActive = true;
     public bool playerLoseScenario = false;
     public bool playerWinScenario = false;
@@ -20,11 +21,17 @@ public class GameManager : MonoBehaviour
     public int dollPlaced = 0;
 
     // GameObjects
+    [Header("Objects in scene")]
     public GameObject player;
     public GameObject enemy;
     public List<GameObject> searchSpots;
     public List<GameObject> hideSpots;
     public List<GameObject> burningSpots;
+
+    // Audio
+    [Header("Audio")]
+    public AudioClip burnDollSFX;
+    private AudioSource audioSource;
 
     
     // SINGLETON
@@ -45,6 +52,9 @@ public class GameManager : MonoBehaviour
         // Store player and enemy reference
         player = GameObject.FindGameObjectWithTag("Player");
         enemy = GameObject.FindGameObjectWithTag("Enemy");
+
+        // Components
+        audioSource = GetComponent<AudioSource>();
 
         // Store references
         searchSpots = new List<GameObject>(GameObject.FindGameObjectsWithTag("SearchSpot"));
@@ -194,6 +204,9 @@ public class GameManager : MonoBehaviour
 
         // Scare the clown
         enemy.GetComponent<PatrolAI>().EscapeFromPlayer();
+
+        // Play ritual sound
+        audioSource.PlayOneShot(burnDollSFX);
 
         // Remove interaction for hidding, searching and burning
         RemoveInteraction();

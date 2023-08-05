@@ -26,11 +26,12 @@ public class PatrolAI : MonoBehaviour
     [SerializeField] private float nearestDistance = 10000;
 
     // Conditions
-    private bool isWaiting;
-    private bool needClimbing;
-    private bool isClimbing;
-    private bool playerSpotted;
-    private bool isAttacking;
+    [Header("Conditions")]
+    [SerializeField] private bool isWaiting;
+    [SerializeField] private bool needClimbing;
+    [SerializeField] private bool isClimbing;
+    [SerializeField] private bool playerSpotted;
+    [SerializeField] private bool isAttacking;
     public bool isEscapingFromPlayer;
 
     // Components
@@ -38,9 +39,12 @@ public class PatrolAI : MonoBehaviour
     private Animator animator;
 
     // Audio
-    private AudioSource audioSource;
+    [Header("Audio")]
     [SerializeField] AudioClip caughtLaughSFX;
     [SerializeField] AudioClip startPatrollingSFX;
+    [SerializeField] AudioClip updatePatrolSFX_1;
+    [SerializeField] AudioClip updatePatrolSFX_2;
+    private AudioSource audioSource;
     private bool startPatrollingSFXPlayed = false;
 
     private void Start()
@@ -115,6 +119,16 @@ public class PatrolAI : MonoBehaviour
         // 50% extra for each doll placed
         totalSpeed = speed + (speed * dollPlaced / 2f);
         Debug.Log("Enemy speed increased by " +  (50 * dollPlaced).ToString() + "% !");
+
+        // Audio Cue
+        if (dollPlaced == 1)
+        {
+            audioSource.PlayOneShot(updatePatrolSFX_1);
+        }
+        else if (dollPlaced == 2)
+        {
+            audioSource.PlayOneShot(updatePatrolSFX_2);
+        }
     }
 
     #region PATROL_AI
@@ -283,6 +297,7 @@ public class PatrolAI : MonoBehaviour
         {
             isClimbing = true;
             rb.isKinematic = true;
+            animator.SetBool("b_isClimbing", isClimbing);
         }
 
         if(isClimbing)
@@ -302,6 +317,8 @@ public class PatrolAI : MonoBehaviour
                 rb.isKinematic = false;
                 needClimbing = false;
                 isClimbing = false;
+                animator.SetBool("b_isClimbing", isClimbing);
+
             }
         }
     }
