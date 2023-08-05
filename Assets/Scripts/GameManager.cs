@@ -265,14 +265,25 @@ public class GameManager : MonoBehaviour
     public void GameWin()
     {
         isGameActive = false;
-        playerWinScenario = true;
+        playerWinScenario = true;   
+    }
+
+    IEnumerator GameWinRoutine()
+    {
+        Animator enemyAnimator = enemy.GetComponent<Animator>();
+
+        enemyAnimator.SetTrigger("t_Hurt");
+
+        float animationLength = enemyAnimator.GetCurrentAnimatorStateInfo(0).length;
+
+        yield return new WaitForSecondsRealtime(animationLength);
+
         UIManager.Instance.ShowGameWinCanvas();
 
         // Audio
         mainCamSound.Stop();
         mainCamSound.clip = winSound;
         mainCamSound.PlayOneShot(winSound);
-
     }
 
     public void RestartGame()

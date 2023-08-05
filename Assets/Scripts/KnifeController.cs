@@ -10,6 +10,7 @@ public class KnifeController : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         PatrolAI enemy = collision.gameObject.GetComponent<PatrolAI>();
+        
         if (enemy != null)
         {
             enemyInRangeOfAttack = true;

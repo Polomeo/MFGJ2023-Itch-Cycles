@@ -13,9 +13,6 @@ public class BurningSpot : MonoBehaviour
     [SerializeField] private Sprite idleSprite;
 
     private string burnDollText = "Press E to Place Doll";
-    // private string pickKnifeText = "Press E to Take Knife and Attack";
-
-    // private bool dollsBurn;
 
     private void Start()
     {
@@ -86,8 +83,6 @@ public class BurningSpot : MonoBehaviour
 
         // Deactivate interaction
         GameManager.Instance.RemoveInteraction();
-
-        // dollsBurn = true;
     }
 
 }

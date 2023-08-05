@@ -13,6 +13,7 @@ public class HidingSpot : MonoBehaviour
     private Interactable interactable;
 
     private string pressEtoHideText = "Press E to Hide";
+    private string pressEtoExit = "Press E to Exit";
 
     // Audio
     private AudioSource audioSource;
@@ -27,7 +28,6 @@ public class HidingSpot : MonoBehaviour
 
         // Starting message
         interactable.SetInteractText(pressEtoHideText);
-
         
     }
 
@@ -43,11 +43,17 @@ public class HidingSpot : MonoBehaviour
                 // Hide the player in this gameObject position
                 controller.HidePlayer(transform.position);
 
+                // Update interaction text
+                interactable.SetInteractText(pressEtoExit);
+
             }
             else if (playerIsHiddenHere)
             {
                 PlayerExitHideSpot();
                 controller.UnHidePlayer();
+
+                // Update interaction text
+                interactable.SetInteractText(pressEtoHideText);
             }
         }
     }

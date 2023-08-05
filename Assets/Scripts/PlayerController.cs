@@ -77,8 +77,11 @@ public class PlayerController : MonoBehaviour
 
                 KnifeController knifeController = knife.GetComponent<KnifeController>();
 
+                // If enemy in range then attack is successful
                 if (knifeController.enemyInRangeOfAttack)
                 {
+
+
                     GameManager.Instance.GameWin();
                 }
             }
@@ -295,7 +298,7 @@ public class PlayerController : MonoBehaviour
         Vector3 startLocalPosition = knife.transform.localPosition;
         
         // Rotate to attack
-        knife.transform.localPosition = new Vector3(0.98f, 0.3f, knife.transform.position.z);
+        knife.transform.localPosition = new Vector3(0.98f, 0.25f, knife.transform.position.z);
         knife.transform.Rotate(0f, 0f, -28f);
         
         // Wait
