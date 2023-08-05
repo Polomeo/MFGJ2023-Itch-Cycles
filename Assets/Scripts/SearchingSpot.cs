@@ -13,6 +13,7 @@ public class SearchingSpot : MonoBehaviour
     [SerializeField] Sprite alreadySearchSprite;
 
     private GameObject player;
+    private Interactable interactable;
 
     // Audio
     private AudioSource audioSource;
@@ -22,6 +23,11 @@ public class SearchingSpot : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
         audioSource = player.GetComponent<AudioSource>();
+        interactable = GetComponent<Interactable>();
+
+        // Initial message
+        interactable.SetInteractText("Press E to Search");
+        
     }
 
     public void PutDollIn()
@@ -49,6 +55,12 @@ public class SearchingSpot : MonoBehaviour
             if (alreadySearch)
             {
                 Debug.Log("Spot already searched!");
+                interactable.SetInteractText("Nothing here...");
+            }
+
+            if(controller.isHoldingADoll)
+            {
+                interactable.SetInteractText("Must take this doll first!");
             }
         }
     }
@@ -56,7 +68,8 @@ public class SearchingSpot : MonoBehaviour
     IEnumerator Searching(PlayerController controller)
     {
         Debug.Log("Searching...");
-        
+        interactable.SetInteractText("Searching...");
+
         // Tell the player that "is searching" and pass this GameObject position
         controller.IsSearching(transform.position);
 
@@ -70,12 +83,14 @@ public class SearchingSpot : MonoBehaviour
         if (thisSpotHasADoll)
         {
             controller.DollFound();
+            interactable.SetInteractText("Found a doll!");
         }
 
         Debug.Log("Search complete.");
         
         // Tell the player that the searching is done
         controller.DoneSearching();
+        interactable.SetInteractText("Nothing here...");
 
         playerIsSearchingHere = false;
         alreadySearch = true;

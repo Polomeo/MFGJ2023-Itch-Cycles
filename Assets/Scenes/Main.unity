@@ -615,7 +615,7 @@ MonoBehaviour:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -3751,7 +3751,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1651946178}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.69, y: -0.92, z: 0}
+  m_LocalPosition: {x: -1.4, y: -0.92, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3856,7 +3856,7 @@ MonoBehaviour:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -5082,6 +5082,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4516883157911182291, guid: bca856808df9f844896d71e83f344b50, type: 3}
+      propertyPath: m_Size.x
+      value: 1.6200991
+      objectReference: {fileID: 0}
+    - target: {fileID: 4516883157911182291, guid: bca856808df9f844896d71e83f344b50, type: 3}
+      propertyPath: m_Size.y
+      value: 3.35983
+      objectReference: {fileID: 0}
+    - target: {fileID: 4516883157911182291, guid: bca856808df9f844896d71e83f344b50, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.091299534
+      objectReference: {fileID: 0}
+    - target: {fileID: 4516883157911182291, guid: bca856808df9f844896d71e83f344b50, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.44508505
+      objectReference: {fileID: 0}
     - target: {fileID: 4516883157911182294, guid: bca856808df9f844896d71e83f344b50, type: 3}
       propertyPath: m_Name
       value: Search_Toilette
@@ -5907,6 +5923,14 @@ PrefabInstance:
     - target: {fileID: 1742314586053433896, guid: ec8022310a160484890bad6165acc1d5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8566589839523850678, guid: ec8022310a160484890bad6165acc1d5, type: 3}
+      propertyPath: m_Size.x
+      value: 1.8389616
+      objectReference: {fileID: 0}
+    - target: {fileID: 8566589839523850678, guid: ec8022310a160484890bad6165acc1d5, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.20735002
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec8022310a160484890bad6165acc1d5, type: 3}

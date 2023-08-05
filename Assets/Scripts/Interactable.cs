@@ -19,12 +19,6 @@ public class Interactable : MonoBehaviour
 
     private PlayerController playerController;
 
-    // References to comunicate with component variables
-    private BurningSpot burningSpot;
-    private SearchingSpot searchingSpot;
-    private HidingSpot hidingSpot;
-
-
     // When enters the trigger, sets "isInRange" to True
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -58,8 +52,8 @@ public class Interactable : MonoBehaviour
 
     public void SetInteractText(string text)
     {
-        // Called from the script
-        interactText = text;
+        // Called from the script to update the text that is shown to the player
+        UIManager.Instance.UpdateInteractionText(text);
     }
 
     private void Update()

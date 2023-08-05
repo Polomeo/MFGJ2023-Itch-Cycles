@@ -33,8 +33,16 @@ public class UIManager : MonoBehaviour
 
     public void DisplayInteractionText(string text)
     {
-        ActivateText();
-        interactionText.text = text;
+        if(GameManager.Instance.isGameActive)
+        {
+            ActivateText();
+            interactionText.text = text;
+        }
+    }
+
+    public void UpdateInteractionText(string text) 
+    {
+        interactionText.SetText(text);
     }
     public void ActivateText()
     {
