@@ -56,7 +56,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 23f8b735e37de27428a676d7d682207f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -132,9 +132,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerIsSearchingHere: 0
   alreadySearch: 0
+  thisSpotHasADoll: 0
   searchTime: 3
   alreadySearchSprite: {fileID: 1228556001, guid: 5920729c5507c894aa0d1936979c4302, type: 3}
-  thisSpotHasADoll: 0
   interactionSound: {fileID: 8300000, guid: 12e1e3a7e0a45d446bb63b0b100b6bcc, type: 3}
 --- !u!61 &5227804489933251835
 BoxCollider2D:

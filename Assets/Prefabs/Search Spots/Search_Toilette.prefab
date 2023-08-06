@@ -56,7 +56,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 23f8b735e37de27428a676d7d682207f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -132,9 +132,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerIsSearchingHere: 0
   alreadySearch: 0
+  thisSpotHasADoll: 1
   searchTime: 3
   alreadySearchSprite: {fileID: -1267907314, guid: a844cce8c9f98a3449713297e3c67f08, type: 3}
-  thisSpotHasADoll: 1
   interactionSound: {fileID: 8300000, guid: 2696a0aceec69be4d9f6fe0b0d381f0c, type: 3}
 --- !u!61 &4516883157911182291
 BoxCollider2D:
@@ -149,7 +149,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.091299534, y: -0.44508505}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -160,7 +160,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.4375, y: 4.25}
+  m_Size: {x: 1.6200991, y: 3.35983}
   m_EdgeRadius: 0
 --- !u!82 &3823586092050176321
 AudioSource:

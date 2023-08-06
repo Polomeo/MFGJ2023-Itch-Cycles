@@ -235,14 +235,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 788978442, guid: 8662f35576af63a499ff773803dcab16, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 788978442, guid: 8662f35576af63a499ff773803dcab16, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6347162749417964322, guid: 8662f35576af63a499ff773803dcab16, type: 3}
       propertyPath: m_RootOrder
       value: 12
@@ -291,10 +283,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 6347162749417964380, guid: 8662f35576af63a499ff773803dcab16, type: 3}
-      propertyPath: knifeSwingSFX
-      value: 
-      objectReference: {fileID: 8300000, guid: 695431ae6986f134ebd68c9686c179c0, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8662f35576af63a499ff773803dcab16, type: 3}
 --- !u!4 &145287784 stripped
@@ -3570,6 +3558,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1756377831}
     m_Modifications:
+    - target: {fileID: 805310778623508290, guid: f10d90f04addd8c4ab5df976b3214efd, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 23f8b735e37de27428a676d7d682207f, type: 2}
     - target: {fileID: 805310778623508291, guid: f10d90f04addd8c4ab5df976b3214efd, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -4320,6 +4312,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1756377831}
     m_Modifications:
+    - target: {fileID: 805310778623508290, guid: f10d90f04addd8c4ab5df976b3214efd, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 23f8b735e37de27428a676d7d682207f, type: 2}
     - target: {fileID: 805310778623508291, guid: f10d90f04addd8c4ab5df976b3214efd, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -5325,22 +5321,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4516883157911182291, guid: bca856808df9f844896d71e83f344b50, type: 3}
-      propertyPath: m_Size.x
-      value: 1.6200991
-      objectReference: {fileID: 0}
-    - target: {fileID: 4516883157911182291, guid: bca856808df9f844896d71e83f344b50, type: 3}
-      propertyPath: m_Size.y
-      value: 3.35983
-      objectReference: {fileID: 0}
-    - target: {fileID: 4516883157911182291, guid: bca856808df9f844896d71e83f344b50, type: 3}
-      propertyPath: m_Offset.x
-      value: 0.091299534
-      objectReference: {fileID: 0}
-    - target: {fileID: 4516883157911182291, guid: bca856808df9f844896d71e83f344b50, type: 3}
-      propertyPath: m_Offset.y
-      value: -0.44508505
-      objectReference: {fileID: 0}
     - target: {fileID: 4516883157911182294, guid: bca856808df9f844896d71e83f344b50, type: 3}
       propertyPath: m_Name
       value: Search_Toilette
@@ -5354,6 +5334,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1756377831}
     m_Modifications:
+    - target: {fileID: 805310778623508290, guid: f10d90f04addd8c4ab5df976b3214efd, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 23f8b735e37de27428a676d7d682207f, type: 2}
     - target: {fileID: 805310778623508291, guid: f10d90f04addd8c4ab5df976b3214efd, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -5463,10 +5447,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hide_Bed
       objectReference: {fileID: 0}
-    - target: {fileID: 8064758688811466025, guid: 9bd9a159d2852844dab1fa5e7856928e, type: 3}
-      propertyPath: hiddingClip
-      value: 
-      objectReference: {fileID: 8300000, guid: d890bcb12bf864046b4842f91ba48897, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9bd9a159d2852844dab1fa5e7856928e, type: 3}
 --- !u!4 &1204550381304267222 stripped
@@ -5620,10 +5600,6 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 288451416051894666, guid: 3792291500ddb6049900f585045f6d8b, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 288451416051894666, guid: 3792291500ddb6049900f585045f6d8b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 11.24
       objectReference: {fileID: 0}
@@ -5667,18 +5643,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hide_Oven
       objectReference: {fileID: 0}
-    - target: {fileID: 7696542877589125652, guid: 3792291500ddb6049900f585045f6d8b, type: 3}
-      propertyPath: m_Size.x
-      value: 1.5852716
-      objectReference: {fileID: 0}
-    - target: {fileID: 7696542877589125652, guid: 3792291500ddb6049900f585045f6d8b, type: 3}
-      propertyPath: m_Offset.x
-      value: 0.24233449
-      objectReference: {fileID: 0}
-    - target: {fileID: 8081339379614679410, guid: 3792291500ddb6049900f585045f6d8b, type: 3}
-      propertyPath: hiddingClip
-      value: 
-      objectReference: {fileID: 8300000, guid: f17c934dcfef8434aa1b8a557c672453, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3792291500ddb6049900f585045f6d8b, type: 3}
 --- !u!1001 &2708844779929533619
@@ -5688,6 +5652,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1686361020}
     m_Modifications:
+    - target: {fileID: 2673371154984290584, guid: b950500d81acd9e44811a37f58dc60b5, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 23f8b735e37de27428a676d7d682207f, type: 2}
     - target: {fileID: 2673371154984290585, guid: b950500d81acd9e44811a37f58dc60b5, type: 3}
       propertyPath: m_Name
       value: Hide_Closet_Dark
@@ -5935,10 +5903,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1686361020}
     m_Modifications:
-    - target: {fileID: 3516865592503192782, guid: c406127ddc5621741a2a28231eea419a, type: 3}
-      propertyPath: hiddingClip
-      value: 
-      objectReference: {fileID: 8300000, guid: d890bcb12bf864046b4842f91ba48897, type: 3}
     - target: {fileID: 4965232668079162376, guid: c406127ddc5621741a2a28231eea419a, type: 3}
       propertyPath: m_Name
       value: Hide_Bed_Middleroom
@@ -5946,10 +5910,6 @@ PrefabInstance:
     - target: {fileID: 4965232668079162422, guid: c406127ddc5621741a2a28231eea419a, type: 3}
       propertyPath: m_RootOrder
       value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4965232668079162422, guid: c406127ddc5621741a2a28231eea419a, type: 3}
-      propertyPath: m_LocalScale.x
-      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 4965232668079162422, guid: c406127ddc5621741a2a28231eea419a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6096,10 +6056,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7050052995680108284, guid: ea790bb7c36d9f944a691285fd40e083, type: 3}
-      propertyPath: m_SortingOrder
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 7050052995680108285, guid: ea790bb7c36d9f944a691285fd40e083, type: 3}
       propertyPath: m_Name
       value: Manny (enemy)
@@ -6170,14 +6126,6 @@ PrefabInstance:
     - target: {fileID: 1742314586053433896, guid: ec8022310a160484890bad6165acc1d5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8566589839523850678, guid: ec8022310a160484890bad6165acc1d5, type: 3}
-      propertyPath: m_Size.x
-      value: 1.8389616
-      objectReference: {fileID: 0}
-    - target: {fileID: 8566589839523850678, guid: ec8022310a160484890bad6165acc1d5, type: 3}
-      propertyPath: m_Offset.x
-      value: 0.20735002
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec8022310a160484890bad6165acc1d5, type: 3}
@@ -6255,10 +6203,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1686361020}
     m_Modifications:
-    - target: {fileID: 1617127847858052150, guid: 4fd8f7e99c8cc1044adb05bd79296be9, type: 3}
-      propertyPath: hiddingClip
-      value: 
-      objectReference: {fileID: 8300000, guid: d99f278373c28034c9d462ff37c8759a, type: 3}
     - target: {fileID: 7086228626303931598, guid: 4fd8f7e99c8cc1044adb05bd79296be9, type: 3}
       propertyPath: m_RootOrder
       value: 2
