@@ -296,10 +296,11 @@ public class PatrolAI : MonoBehaviour
                 new Vector2(closerLadderSpot.transform.position.x, transform.position.y), totalSpeed * Time.deltaTime);
 
         // Turn sprite to face ladder
-        // if(closerLadderSpot.transform.position.x < transform.position.x) { transform.localScale = new Vector3 ()}
+        if (closerLadderSpot.transform.position.x < transform.position.x) { transform.localScale = new Vector3(-1f, 1f, 1f); }
+        else if (closerLadderSpot.transform.position.x > transform.position.x) { transform.localScale = new Vector3(1f, 1f, 1f); }
 
         // When the ladder is reached
-        if(transform.position.x == closerLadderSpot.transform.position.x)
+        if (transform.position.x == closerLadderSpot.transform.position.x)
         {
             isClimbing = true;
             rb.isKinematic = true;
