@@ -291,6 +291,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 6347162749417964380, guid: 8662f35576af63a499ff773803dcab16, type: 3}
+      propertyPath: knifeSwingSFX
+      value: 
+      objectReference: {fileID: 8300000, guid: 695431ae6986f134ebd68c9686c179c0, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8662f35576af63a499ff773803dcab16, type: 3}
 --- !u!4 &145287784 stripped
@@ -1421,7 +1425,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -272229947, guid: 8eab404effe2a5f43a9fb00414a0e656, type: 3}
+  m_Sprite: {fileID: -847861648, guid: 8eab404effe2a5f43a9fb00414a0e656, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1453,6 +1457,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image: {fileID: 573039977}
   sprites:
+  - {fileID: -847861648, guid: 8eab404effe2a5f43a9fb00414a0e656, type: 3}
+  - {fileID: -847861648, guid: 8eab404effe2a5f43a9fb00414a0e656, type: 3}
+  - {fileID: -847861648, guid: 8eab404effe2a5f43a9fb00414a0e656, type: 3}
+  - {fileID: -847861648, guid: 8eab404effe2a5f43a9fb00414a0e656, type: 3}
   - {fileID: -847861648, guid: 8eab404effe2a5f43a9fb00414a0e656, type: 3}
   - {fileID: 439044514, guid: 8eab404effe2a5f43a9fb00414a0e656, type: 3}
   - {fileID: 68184873, guid: 8eab404effe2a5f43a9fb00414a0e656, type: 3}
@@ -3983,7 +3991,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1711149554
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5154,6 +5162,7 @@ MonoBehaviour:
   urgentSong: {fileID: 8300000, guid: 90822fa10ea2a374da0c2e9446b2358d, type: 3}
   winSound: {fileID: 8300000, guid: 680e0200bb396ea49a141865d9eaa837, type: 3}
   gameOverSound: {fileID: 8300000, guid: ad7225a213ae6fd45bca200754e3ea8c, type: 3}
+  enemyHitSound: {fileID: 8300000, guid: bfcf7f92b6d3ad9419abe93b1972cc18, type: 3}
 --- !u!4 &2116543676
 Transform:
   m_ObjectHideFlags: 0
@@ -6086,6 +6095,10 @@ PrefabInstance:
     - target: {fileID: 7050052995680108283, guid: ea790bb7c36d9f944a691285fd40e083, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7050052995680108284, guid: ea790bb7c36d9f944a691285fd40e083, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7050052995680108285, guid: ea790bb7c36d9f944a691285fd40e083, type: 3}
       propertyPath: m_Name

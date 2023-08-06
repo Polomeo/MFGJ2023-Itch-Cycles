@@ -83,6 +83,10 @@ public class BurningSpot : MonoBehaviour
 
         // Deactivate interaction
         GameManager.Instance.RemoveInteraction();
+
+        // Activate the UI with instructions
+        UIManager.Instance.DisplayInteractionText("Press E to Attack!");
+
     }
 
 }

@@ -7,7 +7,8 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
-    
+
+    #region VARIABLES
     // Player and Enemy current room
     public string playerCurrentRoom { get; private set; }
     public string enemyCurrentRoom { get; private set; }
@@ -35,11 +36,13 @@ public class GameManager : MonoBehaviour
     [SerializeField] private AudioClip urgentSong;
     [SerializeField] private AudioClip winSound;
     [SerializeField] private AudioClip gameOverSound;
+    [SerializeField] private AudioClip enemyHitSound;
 
     private AudioSource audioSource;
     private AudioSource mainCamSound;
 
-    
+    #endregion
+
     // SINGLETON
     void Awake()
     {
@@ -131,7 +134,6 @@ public class GameManager : MonoBehaviour
         // Repopulate the list with all spots
         searchSpots = new List<GameObject>(GameObject.FindGameObjectsWithTag("SearchSpot"));
     }
-
     public void SetPlayerRoom(string room)
     {
         playerCurrentRoom = room;
@@ -197,7 +199,6 @@ public class GameManager : MonoBehaviour
             return false;
         }
     }
-
     public void StartRitual()
     {
         // AUDIO - Stop the song
@@ -210,7 +211,6 @@ public class GameManager : MonoBehaviour
         }
 
         // Give the knife to the player (DONE IN BURNING SPOT)
-        // player.GetComponent<PlayerController>().GetKnife();
 
         // Scare the clown
         enemy.GetComponent<PatrolAI>().EscapeFromPlayer();
@@ -223,10 +223,8 @@ public class GameManager : MonoBehaviour
         mainCamSound.Play();
 
         // Remove interaction for hidding, searching and burning (DONE IN BURNING SPOT)
-        // RemoveInteraction();
    
     }
-
     public void RemoveInteraction()
     {
         // Removes the interaction with objects (other than ladders)
@@ -250,10 +248,17 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    #region GAME_END
     public void GameOver()
     {
+        // Disable UI
+        UIManager.Instance.HideText();
+
+        // Set the variables
         isGameActive = false;
         playerLoseScenario = true;
+
+        // Show Game Over screen
         UIManager.Instance.ShowGameOverCanvas();
 
         // Audio
@@ -261,36 +266,46 @@ public class GameManager : MonoBehaviour
         mainCamSound.clip = gameOverSound; 
         mainCamSound.PlayOneShot(gameOverSound);
     }
-
     public void GameWin()
     {
         isGameActive = false;
-        playerWinScenario = true;   
-    }
+        playerWinScenario = true;
 
+        StartCoroutine(GameWinRoutine());
+    }
     IEnumerator GameWinRoutine()
     {
+        // Stop the music
+        mainCamSound.Stop();
+
+        // Audio
+        audioSource.PlayOneShot(enemyHitSound);
+
+        // Matrix time!
+        Time.timeScale = 0.25f;
+        
+        // Trigger hurt animation
         Animator enemyAnimator = enemy.GetComponent<Animator>();
-
         enemyAnimator.SetTrigger("t_Hurt");
-
+        
+        // Wait until animation ends
         float animationLength = enemyAnimator.GetCurrentAnimatorStateInfo(0).length;
+        yield return new WaitForSecondsRealtime(animationLength * 5); // counting for Slow-motion
 
-        yield return new WaitForSecondsRealtime(animationLength);
+        // Return time to normal
+        Time.timeScale = 1.0f;
 
+        // Show Win Screen
         UIManager.Instance.ShowGameWinCanvas();
 
         // Audio
-        mainCamSound.Stop();
         mainCamSound.clip = winSound;
         mainCamSound.PlayOneShot(winSound);
     }
-
     public void RestartGame()
     {
         SceneManager.LoadScene("Main");
     }
-
     private void ExitGame()
     {
 #if UNITY_EDITOR
@@ -299,4 +314,5 @@ public class GameManager : MonoBehaviour
         Application.Quit();
 #endif
     }
+    #endregion
 }

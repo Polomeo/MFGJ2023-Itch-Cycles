@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class PlayerController : MonoBehaviour
 {
@@ -36,6 +37,7 @@ public class PlayerController : MonoBehaviour
     [Header("Audio Clips")]
     [SerializeField] AudioClip girlCryingCaptureSFX;
     [SerializeField] AudioClip dollFoundSFX;
+    [SerializeField] AudioClip knifeSwingSFX;
     private AudioSource audioSource;
 
     // Start is called before the first frame update
@@ -255,13 +257,11 @@ public class PlayerController : MonoBehaviour
 
         Debug.Log("Doll placed!");
     }
-
     public void GetKnife()
     {
         isHoldingTheKnife = true;
         knife.GetComponent<Renderer>().enabled = true;
     }
-
     public void PlayerHasBeenFound()
     {
         // Player has been found by Manny (the enemy)
@@ -292,7 +292,6 @@ public class PlayerController : MonoBehaviour
 
         animator.SetBool("b_isWalking", movement.x != 0f);
     }
-
     private IEnumerator AttackWithKnife()
     {
         Vector3 startLocalPosition = knife.transform.localPosition;
@@ -301,12 +300,15 @@ public class PlayerController : MonoBehaviour
         knife.transform.localPosition = new Vector3(0.98f, 0.25f, knife.transform.position.z);
         knife.transform.Rotate(0f, 0f, -28f);
         
+        // Audio
+        audioSource.PlayOneShot(knifeSwingSFX);
+        
         // Wait
         yield return new WaitForSeconds(attackTime);
+
 
         // Back to original position
         knife.transform.localPosition = startLocalPosition;
         knife.transform.Rotate(0f, 0f, 28f);
     }
-
 }

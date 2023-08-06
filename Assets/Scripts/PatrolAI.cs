@@ -60,13 +60,12 @@ public class PatrolAI : MonoBehaviour
 
     void Update()
     {
+        // If enemy spotted player
         if(playerSpotted && !isEscapingFromPlayer && GameManager.Instance.isGameActive)
         {
             Vector3 player = GameObject.FindWithTag("Player").transform.position;
             rb.isKinematic = true;
             
-            // Audio
-
             if (transform.position != player)
             {
                 // Run to player
@@ -79,6 +78,9 @@ public class PatrolAI : MonoBehaviour
 
                 if (distance < jumpAttackDistance && !isAttacking)
                 {
+                    // Slow-motion
+                    Time.timeScale = 0.25f;
+
                     isAttacking = true;
                     animator.SetBool("b_isAttacking", isAttacking);
                 }
@@ -88,6 +90,9 @@ public class PatrolAI : MonoBehaviour
                 isAttacking = false;
                 animator.SetBool("b_isAttacking", isAttacking);
                 rb.isKinematic = false;
+
+                // Slow-motion
+                Time.timeScale = 1.0f;
 
                 GameManager.Instance.GameOver();
             }
@@ -113,7 +118,6 @@ public class PatrolAI : MonoBehaviour
         playerSpotted = true;
         audioSource.PlayOneShot(caughtLaughSFX);
     }
-
     public void SetTotalSpeed(int dollPlaced)
     {
         // 50% extra for each doll placed
@@ -130,7 +134,6 @@ public class PatrolAI : MonoBehaviour
             audioSource.PlayOneShot(updatePatrolSFX_2);
         }
     }
-
     #region PATROL_AI
     private void Patrol()
     {
@@ -292,6 +295,9 @@ public class PatrolAI : MonoBehaviour
         transform.position = Vector2.MoveTowards(transform.position,
                 new Vector2(closerLadderSpot.transform.position.x, transform.position.y), totalSpeed * Time.deltaTime);
 
+        // Turn sprite to face ladder
+        // if(closerLadderSpot.transform.position.x < transform.position.x) { transform.localScale = new Vector3 ()}
+
         // When the ladder is reached
         if(transform.position.x == closerLadderSpot.transform.position.x)
         {
@@ -323,7 +329,6 @@ public class PatrolAI : MonoBehaviour
         }
     }
     #endregion
-
     public void EscapeFromPlayer()
     {
         isEscapingFromPlayer = true;

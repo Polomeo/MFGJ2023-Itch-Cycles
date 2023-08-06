@@ -35,7 +35,7 @@ public class UISpriteAnimator : MonoBehaviour
         // play the next to last so the house keeps burning
         if(spriteIndex >= sprites.Length)
         {
-            spriteIndex = 3;
+            spriteIndex = 7;
         }
 
         // Set the sprite
