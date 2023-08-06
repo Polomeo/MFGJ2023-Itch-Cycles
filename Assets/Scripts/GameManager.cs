@@ -72,7 +72,7 @@ public class GameManager : MonoBehaviour
         hideSpots = new List<GameObject>(GameObject.FindGameObjectsWithTag("HideSpot"));
 
         // Starting setup
-        // RandomPlaceDolls();
+        RandomPlaceDolls();
 
     }
 
